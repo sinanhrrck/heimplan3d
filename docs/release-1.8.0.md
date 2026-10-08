@@ -1,4 +1,4 @@
-![NeonPlan 3D 1.8.0: Solarfelder und Dachfenster](https://raw.githubusercontent.com/Mastershort/neonplan3d/main/docs/images/release-1.8.0.jpg)
+![HeimPlan 3D 1.8.0: Solarfelder und Dachfenster](https://raw.githubusercontent.com/sinanhrrck/heimplan3d/main/docs/images/release-1.8.0.jpg)
 
 ### Neu
 
@@ -13,7 +13,7 @@ Bald folgt die Pro-Erweiterung **Solar & Energie**: Module, die bei Sonne leben,
 
 ---
 
-![NeonPlan 3D 1.8.0: solar fields and roof windows](https://raw.githubusercontent.com/Mastershort/neonplan3d/main/docs/images/release-1.8.0.jpg)
+![HeimPlan 3D 1.8.0: solar fields and roof windows](https://raw.githubusercontent.com/sinanhrrck/heimplan3d/main/docs/images/release-1.8.0.jpg)
 
 ### New
 

@@ -109,12 +109,12 @@ TIMES
 - [ ] b · der Lizenzschlüssel ist nicht in der Datei
 - [ ] b · „Komplett-Backup wiederherstellen …“ mit Rückfrage; dieselbe oder eine andere Installation
 - [ ] b · jedes Pack wird erneut geprüft; für eine andere Installation signierte Packs werden übersprungen
-- [ ] b · Das Backup von Home Assistant sichert NeonPlan 3D ebenfalls vollständig
+- [ ] b · Das Backup von Home Assistant sichert HeimPlan 3D ebenfalls vollständig
 
 ## Umzug auf ein neues Home Assistant (10, 7.1)
 - [ ] b · Weg 1: Home-Assistant-Backup auf der neuen Hardware einspielen → alles da
 - [ ] b · Weg 2 Schritt 1: altes System „Alles sichern“
-- [ ] b · Schritt 2: neues System NeonPlan 3D über HACS installieren, Integration hinzufügen, Bereiche anlegen
+- [ ] b · Schritt 2: neues System HeimPlan 3D über HACS installieren, Integration hinzufügen, Bereiche anlegen
 - [ ] b · Schritt 3: Editor → „Sicherung“ → „Komplett-Backup wiederherstellen …“
 - [ ] b · Schritt 4: „Erweiterungen“ → Schlüssel eintragen → „Aktivieren“ → Packs „Installieren“
 - [ ] b · Installationsbindung: Packs sind für genau eine Installation signiert („Installations-Kennung“, anonymer Fingerabdruck)
@@ -127,6 +127,6 @@ TIMES
 - [ ] b · Kamerabilder, Verlauf, Zustände bleiben in Home Assistant, nur im Browser angezeigt
 
 ## Abschluss der Serie
-- [ ] b · Dank an die Zuschauer, Playlist „NeonPlan 3D – Tutorials“
+- [ ] b · Dank an die Zuschauer, Playlist „HeimPlan 3D – Tutorials“
 - [ ] b · Online-Demo, Anleitung, GitHub für Fehler, Discord-Community
 - [ ] b · läuft auch auf alten Wandtablets

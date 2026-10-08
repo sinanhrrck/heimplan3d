@@ -1,9 +1,9 @@
-# NeonPlan 3D – notes for Claude
+# HeimPlan 3D – notes for Claude
 
 - Spec and phase plan: `docs/plan.md` (German). Talk to the user in German; code, identifiers and comments in English.
-- Domain `neonplan3d`, repo `mastershort/neonplan3d`, minimum Home Assistant 2025.1.
+- Domain `heimplan3d`, repo `sinanhrrck/heimplan3d`, minimum Home Assistant 2025.1.
 - Frontend lives in `frontend/` (Lit 3 + TypeScript, no decorators; three.js in a separate lazily loaded bundle).
-  Bundles are committed to `custom_components/neonplan3d/frontend/`, and CI fails when they are stale, so run `npm run build` before committing.
+  Bundles are committed to `custom_components/heimplan3d/frontend/`, and CI fails when they are stale, so run `npm run build` before committing.
 - Checks: `npm test`, `npm run typecheck`, `npm run build` (size budgets), `ruff check` / `ruff format`.
   HA integration tests only run in the Linux CI.
 - Visual self-check: `npm run screenshot` renders `preview/index.html` (invented demo data, mock hass) into `preview/screenshots/`.

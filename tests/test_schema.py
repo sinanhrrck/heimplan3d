@@ -1,6 +1,6 @@
 """Start views of the house, a floor and a room (#206, #282)."""
 
-from custom_components.neonplan3d.schema import ROOM_SCHEMA, START_VIEW_SCHEMA
+from custom_components.heimplan3d.schema import ROOM_SCHEMA, START_VIEW_SCHEMA
 
 ROOM = {"id": "r1", "name": "Bad", "area_id": None, "points": [[0, 0], [2, 0], [2, 2]], "floor_material": "tiles"}
 

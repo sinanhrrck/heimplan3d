@@ -13,9 +13,9 @@ import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMockResponse
 
-from custom_components.neonplan3d import license as lic
-from custom_components.neonplan3d import packs
-from custom_components.neonplan3d.const import DOMAIN
+from custom_components.heimplan3d import license as lic
+from custom_components.heimplan3d import packs
+from custom_components.heimplan3d.const import DOMAIN
 
 PAYLOAD = {
     "format": "fp3dpack",
@@ -93,11 +93,11 @@ async def test_activate_install_and_update(hass: HomeAssistant, hass_ws_client, 
         f"{lic.SHOP_API}/pack", text=_sign(private, keys, {**PAYLOAD, "instance": fp, "licensee": "Anna"})
     )
 
-    await client.send_json_auto_id({"type": "neonplan3d/license/get"})
+    await client.send_json_auto_id({"type": "heimplan3d/license/get"})
     before = (await client.receive_json())["result"]
     assert before["instance"] == fp and not before["active"] and before["packs"] == []
 
-    await client.send_json_auto_id({"type": "neonplan3d/license/activate", "key": "np-abcd-efgh-2345-6789"})
+    await client.send_json_auto_id({"type": "heimplan3d/license/activate", "key": "np-abcd-efgh-2345-6789"})
     result = await client.receive_json()
     assert result["success"], result
     status = result["result"]
@@ -112,7 +112,7 @@ async def test_activate_install_and_update(hass: HomeAssistant, hass_ws_client, 
     assert {k: v for k, v in sent.items() if k != "version"} == {"key": "NP-ABCD-EFGH-2345-6789", "instance": fp}
     assert isinstance(sent["version"], str) and sent["version"]
 
-    await client.send_json_auto_id({"type": "neonplan3d/packs/install", "pack_id": "shop.living"})
+    await client.send_json_auto_id({"type": "heimplan3d/packs/install", "pack_id": "shop.living"})
     result = await client.receive_json()
     assert result["success"], result
     assert result["result"]["licensee"] == "Anna" and result["result"]["release"] == 1
@@ -141,7 +141,7 @@ async def test_activate_install_and_update(hass: HomeAssistant, hass_ws_client, 
     hass.data[DOMAIN].license["checked_at"] = 0
     await lic.async_refresh_quietly(hass, hass.data[DOMAIN])
     assert hass.data[DOMAIN].packs[0]["release"] == 2
-    await client.send_json_auto_id({"type": "neonplan3d/license/get"})
+    await client.send_json_auto_id({"type": "heimplan3d/license/get"})
     status = (await client.receive_json())["result"]
     assert status["packs"][0]["installed"] == 2 and status["error"] is None
     assert [o["id"] for o in status["offers"]] == ["kino"] and status["offers"][0]["new"]
@@ -151,7 +151,7 @@ async def test_activate_install_and_update(hass: HomeAssistant, hass_ws_client, 
     assert status["loyalty"] == {"code": "NP-TREUE-AB12CD", "percent": 10}
 
     # the request carries our own User-Agent (the host blocks aiohttp's default one)
-    assert aioclient_mock.mock_calls[-1][3]["User-Agent"].startswith("NeonPlan3D/")
+    assert aioclient_mock.mock_calls[-1][3]["User-Agent"].startswith("HeimPlan3D/")
 
     # the host throttles with a bare 429: the request is repeated after a pause and then goes through
     monkeypatch.setattr(lic, "RETRY_WAITS", (0.0, 0.0))
@@ -163,7 +163,7 @@ async def test_activate_install_and_update(hass: HomeAssistant, hass_ws_client, 
         return AiohttpClientMockResponse(method, url, status=status, text=text)
 
     aioclient_mock.post(f"{lic.SHOP_API}/catalog", side_effect=throttled)
-    await client.send_json_auto_id({"type": "neonplan3d/license/refresh"})
+    await client.send_json_auto_id({"type": "heimplan3d/license/refresh"})
     result = await client.receive_json()
     assert result["success"] and result["result"]["licensee"] == "Anna"
     assert aioclient_mock.call_count == 2
@@ -172,12 +172,12 @@ async def test_activate_install_and_update(hass: HomeAssistant, hass_ws_client, 
     aioclient_mock.clear_requests()
     refusal = {"code": "ms_np_activation_limit", "message": "no"}
     aioclient_mock.post(f"{lic.SHOP_API}/catalog", status=403, json=refusal)
-    await client.send_json_auto_id({"type": "neonplan3d/license/activate", "key": "NP-ABCD-EFGH-2345-6789"})
+    await client.send_json_auto_id({"type": "heimplan3d/license/activate", "key": "NP-ABCD-EFGH-2345-6789"})
     result = await client.receive_json()
     assert not result["success"] and result["error"]["code"] == "activation_limit"
 
     # forgetting the key keeps the packs and drops offers and code
-    await client.send_json_auto_id({"type": "neonplan3d/license/remove"})
+    await client.send_json_auto_id({"type": "heimplan3d/license/remove"})
     status = (await client.receive_json())["result"]
     assert not status["active"] and len(hass.data[DOMAIN].packs) == 1
     assert status["offers"] == [] and status["loyalty"] is None
@@ -190,7 +190,7 @@ async def test_a_pack_bound_elsewhere_is_refused_on_import(hass: HomeAssistant, 
     client = await hass_ws_client(hass)
     await client.send_json_auto_id(
         {
-            "type": "neonplan3d/packs/import",
+            "type": "heimplan3d/packs/import",
             "pack": _sign(private, keys, {**PAYLOAD, "instance": packs.fingerprint("x")}),
         }
     )

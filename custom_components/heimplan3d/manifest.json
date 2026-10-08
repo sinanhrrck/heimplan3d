@@ -1,0 +1,15 @@
+{
+  "domain": "heimplan3d",
+  "name": "HeimPlan 3D",
+  "after_dependencies": ["recorder"],
+  "codeowners": ["@Mastershort"],
+  "config_flow": true,
+  "dependencies": ["frontend", "http", "panel_custom", "websocket_api"],
+  "documentation": "https://mastershort.de/en/heimplan3d/manual/",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/sinanhrrck/heimplan3d/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "1.12.7"
+}

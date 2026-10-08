@@ -1,0 +1,114 @@
+{
+ "payload": {
+  "format": "fp3dpack",
+  "version": 1,
+  "id": "heimplan.beispiel",
+  "name": "HeimPlan Beispiel-Pack",
+  "publisher": "HeimPlan 3D",
+  "description": "Vorlage für eigene Möbel: ein Sideboard aus Quadern. Kopieren, anpassen, signieren.",
+  "items": [
+   {
+    "id": "sideboard",
+    "name": {
+     "de": "Sideboard",
+     "en": "Sideboard"
+    },
+    "size": [
+     1.6,
+     0.45,
+     0.8
+    ],
+    "surface": true,
+    "parts": [
+     {
+      "shape": "box",
+      "x": 0,
+      "z": 0,
+      "w": 1,
+      "d": 1,
+      "y": 0.1,
+      "h": 0.9,
+      "color": "wood",
+      "top": "wood",
+      "edges": true
+     },
+     {
+      "shape": "box",
+      "x": -0.25,
+      "z": 0.45,
+      "w": 0.48,
+      "d": 0.05,
+      "y": 0.15,
+      "h": 0.8,
+      "color": "body"
+     },
+     {
+      "shape": "box",
+      "x": 0.25,
+      "z": 0.45,
+      "w": 0.48,
+      "d": 0.05,
+      "y": 0.15,
+      "h": 0.8,
+      "color": "body"
+     },
+     {
+      "shape": "cyl",
+      "x": -0.45,
+      "z": -0.4,
+      "w": 0.04,
+      "d": 0.1,
+      "y": 0,
+      "h": 0.1,
+      "color": "metal"
+     },
+     {
+      "shape": "cyl",
+      "x": 0.45,
+      "z": -0.4,
+      "w": 0.04,
+      "d": 0.1,
+      "y": 0,
+      "h": 0.1,
+      "color": "metal"
+     },
+     {
+      "shape": "cyl",
+      "x": -0.45,
+      "z": 0.4,
+      "w": 0.04,
+      "d": 0.1,
+      "y": 0,
+      "h": 0.1,
+      "color": "metal"
+     },
+     {
+      "shape": "cyl",
+      "x": 0.45,
+      "z": 0.4,
+      "w": 0.04,
+      "d": 0.1,
+      "y": 0,
+      "h": 0.1,
+      "color": "metal"
+     }
+    ],
+    "symbol": [
+     {
+      "shape": "rect",
+      "x": 0,
+      "z": 0,
+      "w": 1,
+      "d": 1
+     }
+    ]
+   }
+  ],
+  "licensee": null,
+  "instance": null
+ },
+ "signature": {
+  "key": "f01bf82f6be7",
+  "sig": "uHnulCwG+jnbKKPULYTusrvqbXwxErVruStnzeyujoew53xqzD0nUMRJydmSPfRmod+QkF9V/Fv4138c1t95Cw=="
+ }
+}

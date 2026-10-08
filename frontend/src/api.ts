@@ -1,31 +1,31 @@
-// Websocket calls to the backend (custom_components/neonplan3d/websocket.py).
+// Websocket calls to the backend (custom_components/heimplan3d/websocket.py).
 
 import type { Building } from "./model.ts";
 import type { FurniturePack } from "./packs.ts";
 import type { HomeAssistant } from "./types.ts";
 
 export async function fetchBuilding(hass: HomeAssistant): Promise<{ building: Building; revision: number; version?: string }> {
-  return hass.callWS({ type: "neonplan3d/building/get" });
+  return hass.callWS({ type: "heimplan3d/building/get" });
 }
 
 export async function saveBuilding(hass: HomeAssistant, building: Building): Promise<number> {
-  const res = await hass.callWS<{ revision: number }>({ type: "neonplan3d/building/save", building });
+  const res = await hass.callWS<{ revision: number }>({ type: "heimplan3d/building/save", building });
   return res.revision;
 }
 
 export function subscribeBuilding(hass: HomeAssistant, callback: (revision: number) => void): Promise<() => Promise<void>> {
   return hass.connection.subscribeMessage<{ revision: number }>((msg) => callback(msg.revision), {
-    type: "neonplan3d/building/subscribe",
+    type: "heimplan3d/building/subscribe",
   });
 }
 
 export async function fetchImage(hass: HomeAssistant, imageId: string): Promise<string> {
-  const res = await hass.callWS<{ data: string }>({ type: "neonplan3d/image/get", image_id: imageId });
+  const res = await hass.callWS<{ data: string }>({ type: "heimplan3d/image/get", image_id: imageId });
   return res.data;
 }
 
 export async function storeImage(hass: HomeAssistant, imageId: string, data: string): Promise<void> {
-  await hass.callWS({ type: "neonplan3d/image/set", image_id: imageId, data });
+  await hass.callWS({ type: "heimplan3d/image/set", image_id: imageId, data });
 }
 
 export interface Snapshot {
@@ -39,21 +39,21 @@ export interface Snapshot {
 }
 
 export async function listHistory(hass: HomeAssistant): Promise<Snapshot[]> {
-  const res = await hass.callWS<{ snapshots: Snapshot[] }>({ type: "neonplan3d/history/list" });
+  const res = await hass.callWS<{ snapshots: Snapshot[] }>({ type: "heimplan3d/history/list" });
   return res.snapshots;
 }
 
 export async function takeSnapshot(hass: HomeAssistant): Promise<void> {
-  await hass.callWS({ type: "neonplan3d/history/snapshot" });
+  await hass.callWS({ type: "heimplan3d/history/snapshot" });
 }
 
 export async function restoreSnapshot(hass: HomeAssistant, snapshotId: string): Promise<number> {
-  const res = await hass.callWS<{ revision: number }>({ type: "neonplan3d/history/restore", snapshot_id: snapshotId });
+  const res = await hass.callWS<{ revision: number }>({ type: "heimplan3d/history/restore", snapshot_id: snapshotId });
   return res.revision;
 }
 
 export async function listPacks(hass: HomeAssistant): Promise<FurniturePack[]> {
-  const res = await hass.callWS<{ packs: FurniturePack[] }>({ type: "neonplan3d/packs/list" });
+  const res = await hass.callWS<{ packs: FurniturePack[] }>({ type: "heimplan3d/packs/list" });
   return res.packs;
 }
 
@@ -67,11 +67,11 @@ export interface ImportedPack {
 
 /** Import a pack file; the backend checks its signature (errors carry a code, e.g. "bad_signature"). */
 export async function importPack(hass: HomeAssistant, text: string): Promise<ImportedPack> {
-  return hass.callWS<ImportedPack>({ type: "neonplan3d/packs/import", pack: text });
+  return hass.callWS<ImportedPack>({ type: "heimplan3d/packs/import", pack: text });
 }
 
 export async function removePack(hass: HomeAssistant, packId: string): Promise<void> {
-  await hass.callWS({ type: "neonplan3d/packs/remove", pack_id: packId });
+  await hass.callWS({ type: "heimplan3d/packs/remove", pack_id: packId });
 }
 
 /** A bought pack as the shop lists it, with the release installed here (null = not installed). */
@@ -102,7 +102,7 @@ export interface ShopLoyalty {
 }
 
 /** Ids of the offers seen on the extensions page (the tab shows a dot for new ones). */
-const SEEN_OFFERS = "neonplan3d.seenOffers";
+const SEEN_OFFERS = "heimplan3d.seenOffers";
 
 export function unseenOffers(offers: readonly ShopOffer[]): ShopOffer[] {
   let seen: string[] = [];
@@ -131,7 +131,7 @@ export interface PackUpdate {
   at: number;
 }
 
-const SEEN_UPDATES = "neonplan3d.seenUpdates";
+const SEEN_UPDATES = "heimplan3d.seenUpdates";
 
 export function unseenUpdates(updates: readonly PackUpdate[]): PackUpdate[] {
   let seen: string[] = [];
@@ -175,25 +175,25 @@ export interface LicenseStatus {
 }
 
 export function getLicense(hass: HomeAssistant): Promise<LicenseStatus> {
-  return hass.callWS<LicenseStatus>({ type: "neonplan3d/license/get" });
+  return hass.callWS<LicenseStatus>({ type: "heimplan3d/license/get" });
 }
 
 /** Bind this installation to a customer key (errors carry the shop's code, e.g. "invalid_key"). */
 export function activateLicense(hass: HomeAssistant, key: string): Promise<LicenseStatus> {
-  return hass.callWS<LicenseStatus>({ type: "neonplan3d/license/activate", key });
+  return hass.callWS<LicenseStatus>({ type: "heimplan3d/license/activate", key });
 }
 
 export function removeLicense(hass: HomeAssistant): Promise<LicenseStatus> {
-  return hass.callWS<LicenseStatus>({ type: "neonplan3d/license/remove" });
+  return hass.callWS<LicenseStatus>({ type: "heimplan3d/license/remove" });
 }
 
 export function refreshLicense(hass: HomeAssistant): Promise<LicenseStatus> {
-  return hass.callWS<LicenseStatus>({ type: "neonplan3d/license/refresh" });
+  return hass.callWS<LicenseStatus>({ type: "heimplan3d/license/refresh" });
 }
 
 /** A full backup file: the plan, the packs with their signatures and every stored picture. */
 export interface BackupFile {
-  format: "neonplan3d-backup";
+  format: "heimplan3d-backup";
   version: 1;
   exported_at?: string;
   building: Building;
@@ -202,7 +202,7 @@ export interface BackupFile {
 }
 
 export function fetchBackup(hass: HomeAssistant): Promise<Pick<BackupFile, "format" | "version" | "building" | "packs">> {
-  return hass.callWS({ type: "neonplan3d/backup/export" });
+  return hass.callWS({ type: "heimplan3d/backup/export" });
 }
 
 /** Replace plan and packs from a backup (pictures follow one by one); packs that fail their check are skipped. */
@@ -211,10 +211,10 @@ export function restoreBackup(
   building: Building,
   packs: FurniturePack[],
 ): Promise<{ revision: number; building: Building; packs: number; skipped: { id: string; reason: string }[] }> {
-  return hass.callWS({ type: "neonplan3d/backup/import", building, packs });
+  return hass.callWS({ type: "heimplan3d/backup/import", building, packs });
 }
 
 /** Fetch a bought pack from the shop, signed for this installation (also updates it). */
 export function installPack(hass: HomeAssistant, packId: string): Promise<ImportedPack & { release: number }> {
-  return hass.callWS<ImportedPack & { release: number }>({ type: "neonplan3d/packs/install", pack_id: packId });
+  return hass.callWS<ImportedPack & { release: number }>({ type: "heimplan3d/packs/install", pack_id: packId });
 }

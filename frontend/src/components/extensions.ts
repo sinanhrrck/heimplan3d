@@ -1,23 +1,9 @@
-// The "Extensions" page of the panel: the shop connection, the Pro add-ons and the installed packs.
+// The "Extensions" page of the panel: the add-ons (all free in HeimPlan 3D) and the installed packs.
 // It lives in the editor bundle (loaded with it) and is shown to admins only.
 
 import { css, html, LitElement, nothing } from "lit";
-import {
-  activateLicense,
-  getLicense,
-  importPack,
-  installPack,
-  refreshLicense,
-  removeLicense,
-  removePack,
-  markOffersSeen,
-  markUpdatesSeen,
-  offerLink,
-  unseenUpdates,
-  type CatalogPack,
-  type LicenseStatus,
-} from "../api.ts";
-import { FEATURES, knownFeature, manualUrl, shopUrl, unlockedFeatures } from "../features.ts";
+import { importPack, removePack } from "../api.ts";
+import { FEATURES, knownFeature, manualUrl, unlockedFeatures } from "../features.ts";
 import { translate, type I18nKey } from "../i18n.ts";
 import { packName, type FurniturePack } from "../packs.ts";
 import { controls, tokens } from "../styles.ts";
@@ -28,36 +14,15 @@ export class Extensions extends LitElement {
     hass: { attribute: false },
     packs: { attribute: false },
     _packMsg: { state: true },
-    _license: { state: true },
-    _licenseKey: { state: true },
-    _licenseBusy: { state: true },
-    _licenseMsg: { state: true },
   };
 
   declare hass: HomeAssistant | undefined;
   declare packs: FurniturePack[] | undefined;
   private declare _packMsg: { ok: boolean; text: string } | null;
-  /** The shop connection (loaded when the page opens); null until then. */
-  private declare _license: LicenseStatus | null;
-  private declare _licenseKey: string;
-  /** What runs right now: "activate", "refresh", "remove" or a pack id being installed. */
-  private declare _licenseBusy: string | null;
-  private declare _licenseMsg: { ok: boolean; text: string } | null;
-  private licenseLoading = false;
-  /** Updates not seen before this visit (kept while the page is open). */
-  private freshUpdates: import("../api.ts").PackUpdate[] | null = null;
 
   constructor() {
     super();
     this._packMsg = null;
-    this._license = null;
-    this._licenseKey = "";
-    this._licenseBusy = null;
-    this._licenseMsg = null;
-  }
-
-  private get isAdmin(): boolean {
-    return this.hass?.user?.is_admin ?? false;
   }
 
   private t(key: I18nKey, vars?: Record<string, string | number>): string {
@@ -71,14 +36,10 @@ export class Extensions extends LitElement {
         <h2>${this.t("ext_title")}</h2>
         <p class="fp3d-sub">${this.t("ext_intro")}</p>
         <div class="fp3d-ext-actions">
-          <a class="fp3d-btn fp3d-primary" href=${shopUrl(this.hass?.language)} target="_blank" rel="noopener">${this.t("ext_shop")}</a>
-          <a class="fp3d-btn" href="https://github.com/Mastershort/neonplan3d/issues/new/choose" target="_blank" rel="noopener">🐞 ${this.t("help_issue")}</a>
-          <a class="fp3d-btn" href="https://github.com/Mastershort/neonplan3d/discussions/categories/ideas" target="_blank" rel="noopener">💡 ${this.t("help_idea")}</a>
-          <a class="fp3d-btn" href="https://discord.gg/SSdVVFsev7" target="_blank" rel="noopener">💬 ${this.t("help_discord")}</a>
+          <a class="fp3d-btn" href="https://github.com/sinanhrrck/heimplan3d/issues/new/choose" target="_blank" rel="noopener">🐞 ${this.t("help_issue")}</a>
           <a class="fp3d-btn" href=${manualUrl(this.hass?.language, "extensions")} target="_blank" rel="noopener">📖 ${this.t("manual")}</a>
         </div>
       </header>
-      ${this.renderUpdates()} ${this.renderOffers()} ${this.renderShop()}
       <section class="fp3d-ext-card">
         <h3>${this.t("ext_pro")}</h3>
         <div class="fp3d-ext-pro">
@@ -87,9 +48,7 @@ export class Extensions extends LitElement {
               <b>${unlocked.has(f) ? "✓" : "🔒"} ${this.t(`pro_name_${f}` as I18nKey)}</b>
               <span class="fp3d-sub">${this.t(`pro_feature_${f}` as I18nKey)}</span>
               <span class="fp3d-ext-links">
-                ${unlocked.has(f)
-                  ? html`<span class="fp3d-ext-state">${this.t("ext_active")}</span>`
-                  : html`<a class="fp3d-ext-link" href=${shopUrl(this.hass?.language)} target="_blank" rel="noopener">${this.t("ext_get")}</a>`}
+                <span class="fp3d-ext-state">${this.t("ext_active")}</span>
                 <a class="fp3d-ext-link" href=${manualUrl(this.hass?.language, f)} target="_blank" rel="noopener">${this.t("manual_more")}</a>
               </span>
             </div>`,
@@ -97,189 +56,6 @@ export class Extensions extends LitElement {
         </div>
       </section>
       ${this.renderPacks()}
-    </div>`;
-  }
-
-  private async loadLicense(): Promise<void> {
-    if (!this.hass || this.licenseLoading) return;
-    this.licenseLoading = true;
-    try {
-      this._license = await getLicense(this.hass);
-    } catch {
-      this._license = null;
-    } finally {
-      this.licenseLoading = false;
-    }
-  }
-
-  /** Runs a shop call, shows its result or the shop's error. */
-  private async shopCall(busy: string, call: () => Promise<LicenseStatus>, ok?: string): Promise<void> {
-    this._licenseBusy = busy;
-    this._licenseMsg = null;
-    try {
-      this._license = await call();
-      if (ok) this._licenseMsg = { ok: true, text: ok };
-    } catch (err) {
-      const { code, message } = (err ?? {}) as { code?: string; message?: string };
-      const key = `license_error_${code}` as I18nKey;
-      const text = this.t(key);
-      this._licenseMsg = { ok: false, text: text === key ? this.t("license_error_other", { detail: message ?? String(err) }) : text };
-    } finally {
-      this._licenseBusy = null;
-    }
-  }
-
-  private async installFromShop(pack: CatalogPack): Promise<void> {
-    if (!this.hass) return;
-    const hass = this.hass;
-    await this.shopCall(pack.id, async () => {
-      const res = await installPack(hass, pack.id);
-      this._packMsg = { ok: true, text: this.t("pack_imported", { name: res.name, publisher: res.publisher, n: res.items }) };
-      this.dispatchEvent(new CustomEvent("packs-changed", { bubbles: true, composed: true }));
-      return getLicense(hass);
-    });
-  }
-
-  /** Packs that were updated since the last visit: what they brought (shown until the page is left). */
-  private renderUpdates() {
-    const lic = this._license;
-    if (!lic?.active) return nothing;
-    if (!this.freshUpdates) {
-      this.freshUpdates = unseenUpdates(lic.updates ?? []);
-      markUpdatesSeen(lic.updates ?? []);
-    }
-    if (!this.freshUpdates.length) return nothing;
-    return html`<section class="fp3d-ext-card fp3d-updates">
-      ${this.freshUpdates.map(
-        (u) => html`<p>✨ ${u.added > 0 ? this.t("pack_updated_added", { name: packName(u, this.hass?.language ?? "de"), release: u.release, n: u.added }) : this.t("pack_updated", { name: packName(u, this.hass?.language ?? "de"), release: u.release })}</p>`,
-      )}
-    </section>`;
-  }
-
-  /** New in the shop: packs and Pro add-ons not owned yet, and the customer's loyalty code. */
-  private renderOffers() {
-    const lic = this._license;
-    if (!lic?.active) return nothing;
-    const offers = [...(lic.offers ?? [])].sort((a, b) => Number(b.new) - Number(a.new));
-    const loyalty = lic.loyalty ?? null;
-    if (!offers.length && !loyalty) return nothing;
-    // opening the page counts as seen: the dot on the tab goes away
-    markOffersSeen(offers);
-    this.dispatchEvent(new CustomEvent("offers-seen", { bubbles: true, composed: true }));
-    return html`<section class="fp3d-ext-card fp3d-offers">
-      <h3>${this.t("offers_title")}</h3>
-      ${loyalty
-        ? html`<div class="fp3d-loyalty">
-            <span>🎁 ${this.t("offers_loyalty", { percent: loyalty.percent })}</span>
-            <code>${loyalty.code}</code>
-            <button
-              class="fp3d-btn"
-              @click=${async () => {
-                try {
-                  await navigator.clipboard.writeText(loyalty.code);
-                  this._licenseMsg = { ok: true, text: this.t("license_copied") };
-                } catch {
-                  /* no clipboard: the code stays readable */
-                }
-              }}
-            >
-              ${this.t("license_copy")}
-            </button>
-          </div>`
-        : nothing}
-      <div class="fp3d-offer-grid">
-        ${offers.map(
-          (o) => html`<a class="fp3d-offer" href=${offerLink(o.url, loyalty)} target="_blank" rel="noopener">
-            ${o.image ? html`<img src=${o.image} alt="" loading="lazy" />` : html`<div class="fp3d-offer-ph">✦</div>`}
-            <div class="fp3d-offer-body">
-              <b>${packName(o, this.hass?.language ?? "de")}</b>
-              ${o.new ? html`<span class="fp3d-offer-new">${this.t("offers_new")}</span>` : nothing}
-              <span class="fp3d-offer-kind">${this.t(`offers_kind_${o.kind}` as I18nKey)}${o.price ? ` · ${o.price}` : ""}</span>
-              ${o.teaser ? html`<span class="fp3d-sub">${o.teaser}</span>` : nothing}
-            </div>
-          </a>`,
-        )}
-      </div>
-    </section>`;
-  }
-
-  /** The shop connection: fingerprint, key and the bought packs with install and update buttons. */
-  private renderShop() {
-    const lic = this._license;
-    if (!this.isAdmin || !this.hass) return nothing;
-    if (!lic) {
-      void this.loadLicense();
-      return nothing;
-    }
-    const hass = this.hass;
-    const busy = this._licenseBusy;
-    const checked = lic.checked_at ? new Date(lic.checked_at * 1000).toLocaleString(hass.language) : null;
-    return html`<div class="fp3d-shop fp3d-ext-card">
-      <h3>${this.t("license_title")}</h3>
-      <div class="fp3d-shop-row">
-        <span>${this.t("license_instance")}</span>
-        <code>${lic.instance}</code>
-        <button
-          class="fp3d-btn"
-          @click=${async () => {
-            try {
-              await navigator.clipboard.writeText(lic.instance);
-              this._licenseMsg = { ok: true, text: this.t("license_copied") };
-            } catch {
-              /* no clipboard: the code stays readable */
-            }
-          }}
-        >
-          ${this.t("license_copy")}
-        </button>
-      </div>
-      ${lic.active
-        ? html`<div class="fp3d-shop-row">
-              <span>${this.t("license_active", { name: lic.licensee ?? "", key: lic.key_hint ?? "" })}</span>
-              ${checked ? html`<span class="fp3d-sub">${this.t("license_checked", { time: checked })}</span>` : nothing}
-              <button class="fp3d-btn" ?disabled=${!!busy} @click=${() => this.shopCall("refresh", () => refreshLicense(hass), this.t("license_refreshed"))}>
-                ${busy === "refresh" ? "…" : this.t("license_refresh")}
-              </button>
-              <button class="fp3d-btn fp3d-danger" ?disabled=${!!busy} @click=${() => confirm(this.t("license_remove_confirm")) && this.shopCall("remove", () => removeLicense(hass))}>
-                ${this.t("license_remove")}
-              </button>
-            </div>
-            ${lic.error ? html`<p class="fp3d-sub fp3d-pack-error">${this.t(`license_error_${lic.error}` as I18nKey)}</p>` : nothing}
-            ${lic.packs.length
-              ? lic.packs.map((p) => {
-                  const state = p.installed === null ? "install" : p.installed < p.release ? "update" : "installed";
-                  return html`<div class="fp3d-pack">
-                    <div>
-                      <b>${packName(p, this.hass?.language ?? "de")}</b>
-                      <span class="fp3d-sub">${state === "installed" ? this.t("license_installed", { release: p.release }) : state === "update" ? this.t("license_update_available", { release: p.release }) : this.t("license_not_installed")}</span>
-                    </div>
-                    ${state === "installed"
-                      ? nothing
-                      : html`<button class="fp3d-btn fp3d-primary" ?disabled=${!!busy} @click=${() => this.installFromShop(p)}>
-                          ${busy === p.id ? "…" : this.t(state === "update" ? "license_update" : "license_install")}
-                        </button>`}
-                  </div>`;
-                })
-              : html`<p class="fp3d-sub">${this.t("license_none")}</p>`}`
-        : html`<div class="fp3d-shop-row">
-            <input
-              type="text"
-              class="fp3d-shop-key"
-              placeholder="NP-XXXX-XXXX-XXXX-XXXX"
-              autocomplete="off"
-              spellcheck="false"
-              .value=${this._licenseKey}
-              @input=${(e: Event) => (this._licenseKey = (e.target as HTMLInputElement).value)}
-              @keydown=${(e: KeyboardEvent) => {
-                if (e.key === "Enter" && this._licenseKey.trim()) void this.shopCall("activate", () => activateLicense(hass, this._licenseKey), this.t("license_activated"));
-              }}
-            />
-            <button class="fp3d-btn fp3d-primary" ?disabled=${!!busy || !this._licenseKey.trim()} @click=${() => this.shopCall("activate", () => activateLicense(hass, this._licenseKey), this.t("license_activated"))}>
-              ${busy === "activate" ? "…" : this.t("license_activate")}
-            </button>
-          </div>`}
-      ${this._licenseMsg ? html`<p class="fp3d-sub ${this._licenseMsg.ok ? "fp3d-notice" : "fp3d-pack-error"}">${this._licenseMsg.text}</p>` : nothing}
-      <p class="fp3d-sub">${this.t("license_hint")} <a href=${lic.shop_url} target="_blank" rel="noopener">${this.t("license_shop")}</a></p>
     </div>`;
   }
 

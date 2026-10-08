@@ -351,7 +351,7 @@ export class Fp3dEditor extends LitElement {
     this._furnQuery = "";
     this._libOpen = new Set(["group:lights", "group:living"]);
     try {
-      const saved = localStorage.getItem("neonplan3d.library");
+      const saved = localStorage.getItem("heimplan3d.library");
       if (saved) this._libOpen = new Set(JSON.parse(saved) as string[]);
     } catch {
       // no storage: the defaults stand
@@ -375,14 +375,14 @@ export class Fp3dEditor extends LitElement {
     this._openingPreset = "door";
     let split = false;
     try {
-      split = localStorage.getItem("neonplan3d.editor3d") === "1";
+      split = localStorage.getItem("heimplan3d.editor3d") === "1";
     } catch {
       // no storage
     }
     this._split = split;
     this._splitRatio = 0.55;
     try {
-      const saved = Number(localStorage.getItem("neonplan3d.editorSplit"));
+      const saved = Number(localStorage.getItem("heimplan3d.editorSplit"));
       if (saved >= 20 && saved <= 80) this._splitRatio = saved / 100;
     } catch {
       /* no storage */
@@ -391,7 +391,7 @@ export class Fp3dEditor extends LitElement {
     // the 3D pane's wall view stays as it was last set on this device (#309)
     this._wall3d = "cut";
     try {
-      if (localStorage.getItem("neonplan3d.walls3d") === "auto") this._wall3d = "auto";
+      if (localStorage.getItem("heimplan3d.walls3d") === "auto") this._wall3d = "auto";
     } catch {
       // no storage: the default
     }
@@ -399,7 +399,7 @@ export class Fp3dEditor extends LitElement {
     this._sideOpen = false;
     let pinned = true;
     try {
-      pinned = localStorage.getItem("neonplan3d.sidePinned") !== "0";
+      pinned = localStorage.getItem("heimplan3d.sidePinned") !== "0";
     } catch {
       // no storage
     }
@@ -485,7 +485,7 @@ export class Fp3dEditor extends LitElement {
       handle.removeEventListener("pointerup", up);
       handle.removeEventListener("pointercancel", up);
       try {
-        localStorage.setItem("neonplan3d.editorSplit", String(Math.round(this._splitRatio * 100)));
+        localStorage.setItem("heimplan3d.editorSplit", String(Math.round(this._splitRatio * 100)));
       } catch {
         /* no storage */
       }
@@ -499,7 +499,7 @@ export class Fp3dEditor extends LitElement {
   private toggleSplit(): void {
     this._split = !this._split;
     try {
-      localStorage.setItem("neonplan3d.editor3d", this._split ? "1" : "0");
+      localStorage.setItem("heimplan3d.editor3d", this._split ? "1" : "0");
     } catch {
       // no storage: the choice lasts for this page
     }
@@ -751,7 +751,7 @@ export class Fp3dEditor extends LitElement {
   private setWall3d(mode: WallMode): void {
     this._wall3d = mode;
     try {
-      localStorage.setItem("neonplan3d.walls3d", mode);
+      localStorage.setItem("heimplan3d.walls3d", mode);
     } catch {
       // no storage: not remembered
     }
@@ -3349,8 +3349,8 @@ export class Fp3dEditor extends LitElement {
       <h3>${this.t("help_title")}</h3>
       <p class="fp3d-sub">${this.t("help_hint")}</p>
       <div class="fp3d-actions">
-        <a class="fp3d-btn" href="https://github.com/Mastershort/neonplan3d/issues/new/choose" target="_blank" rel="noopener">🐞 ${this.t("help_issue")}</a>
-        <a class="fp3d-btn" href="https://github.com/Mastershort/neonplan3d/discussions/categories/ideas" target="_blank" rel="noopener">💡 ${this.t("help_idea")}</a>
+        <a class="fp3d-btn" href="https://github.com/sinanhrrck/heimplan3d/issues/new/choose" target="_blank" rel="noopener">🐞 ${this.t("help_issue")}</a>
+        <a class="fp3d-btn" href="https://github.com/sinanhrrck/heimplan3d/discussions/categories/ideas" target="_blank" rel="noopener">💡 ${this.t("help_idea")}</a>
         <a class="fp3d-btn" href="https://discord.gg/SSdVVFsev7" target="_blank" rel="noopener">💬 ${this.t("help_discord")}</a>
       </div>
     </section>`;
@@ -5127,7 +5127,7 @@ export class Fp3dEditor extends LitElement {
     this._sidePinned = pinned;
     this._sideOpen = false;
     try {
-      localStorage.setItem("neonplan3d.sidePinned", pinned ? "1" : "0");
+      localStorage.setItem("heimplan3d.sidePinned", pinned ? "1" : "0");
     } catch {
       // no storage
     }
@@ -6431,7 +6431,7 @@ export class Fp3dEditor extends LitElement {
     else next.add(key);
     this._libOpen = next;
     try {
-      localStorage.setItem("neonplan3d.library", JSON.stringify([...next]));
+      localStorage.setItem("heimplan3d.library", JSON.stringify([...next]));
     } catch {
       // no storage
     }
@@ -7120,7 +7120,7 @@ export class Fp3dEditor extends LitElement {
         }
       }
       const day = new Date().toISOString().slice(0, 10);
-      download(`neonplan3d-${this.t("export_name_full")}-${day}.json`, JSON.stringify({ ...base, exported_at: new Date().toISOString(), images }));
+      download(`heimplan3d-${this.t("export_name_full")}-${day}.json`, JSON.stringify({ ...base, exported_at: new Date().toISOString(), images }));
     } catch (err) {
       alert(this.t("backup_import_error", { error: String((err as { message?: string })?.message ?? err) }));
     } finally {
@@ -7140,7 +7140,7 @@ export class Fp3dEditor extends LitElement {
       alert(this.t("import_error_not_json"));
       return;
     }
-    if (data?.format !== "neonplan3d-backup" || !data.building) {
+    if (data?.format !== "heimplan3d-backup" || !data.building) {
       alert(this.t("backup_full_not_backup"));
       return;
     }
@@ -7174,7 +7174,7 @@ export class Fp3dEditor extends LitElement {
 
   private exportPlan(shareable: boolean): void {
     const day = new Date().toISOString().slice(0, 10);
-    download(`neonplan3d-${this.t(shareable ? "export_name_template" : "export_name_backup")}-${day}.json`, JSON.stringify(exportFile(this._doc, shareable), null, 2));
+    download(`heimplan3d-${this.t(shareable ? "export_name_template" : "export_name_backup")}-${day}.json`, JSON.stringify(exportFile(this._doc, shareable), null, 2));
   }
 
   private async importPlan(e: Event): Promise<void> {

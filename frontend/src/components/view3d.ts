@@ -425,7 +425,7 @@ export class Fp3dView3d extends LitElement {
     this._find = null;
     this._central = false;
     try {
-      this._thumbsCompact = localStorage.getItem("neonplan3d.thumbs_compact") === "1";
+      this._thumbsCompact = localStorage.getItem("heimplan3d.thumbs_compact") === "1";
     } catch {
       this._thumbsCompact = false;
     }
@@ -454,8 +454,8 @@ export class Fp3dView3d extends LitElement {
     this.cameraWall = false;
     this.holograms = null;
     try {
-      this._flows = localStorage.getItem("neonplan3d.flows") === "1";
-      this._holoShow = localStorage.getItem("neonplan3d.holos") !== "0";
+      this._flows = localStorage.getItem("heimplan3d.flows") === "1";
+      this._holoShow = localStorage.getItem("heimplan3d.holos") !== "0";
     } catch {
       this._flows = false;
       this._holoShow = true;
@@ -2158,7 +2158,7 @@ export class Fp3dView3d extends LitElement {
     const fold = () => {
       this._thumbsCompact = !compact;
       try {
-        localStorage.setItem("neonplan3d.thumbs_compact", this._thumbsCompact ? "1" : "0");
+        localStorage.setItem("heimplan3d.thumbs_compact", this._thumbsCompact ? "1" : "0");
       } catch {
         // private mode: the choice lasts for this page only
       }
@@ -2726,7 +2726,7 @@ export class Fp3dView3d extends LitElement {
   private toggleHolos(): void {
     this._holoShow = !this._holoShow;
     try {
-      localStorage.setItem("neonplan3d.holos", this._holoShow ? "1" : "0");
+      localStorage.setItem("heimplan3d.holos", this._holoShow ? "1" : "0");
     } catch {
       // private mode: the choice lasts for this page only
     }
@@ -2739,7 +2739,7 @@ export class Fp3dView3d extends LitElement {
   private toggleFlows(): void {
     this._flows = !this._flows;
     try {
-      localStorage.setItem("neonplan3d.flows", this._flows ? "1" : "0");
+      localStorage.setItem("heimplan3d.flows", this._flows ? "1" : "0");
     } catch {
       // private mode: the choice lasts for this page only
     }

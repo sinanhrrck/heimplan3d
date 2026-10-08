@@ -1,6 +1,6 @@
-# NeonPlan 3D – Roadmap
+# HeimPlan 3D – Roadmap
 
-What comes next. The order follows your wishes (issues and 👍 in [Discussions → Ideas](https://github.com/Mastershort/neonplan3d/discussions/categories/ideas)) and may change. There are deliberately no fixed dates – a feature ships when it is good. Everything keeps running on old, weak wall tablets.
+What comes next. The order follows your wishes (issues and 👍 in [Discussions → Ideas](https://github.com/sinanhrrck/heimplan3d/discussions/categories/ideas)) and may change. There are deliberately no fixed dates – a feature ships when it is good. Everything keeps running on old, weak wall tablets.
 
 *Deutsch weiter unten.*
 
@@ -76,9 +76,9 @@ Owners get new releases of their packs automatically and for free.
 
 ---
 
-# NeonPlan 3D – Roadmap (Deutsch)
+# HeimPlan 3D – Roadmap (Deutsch)
 
-Was als Nächstes kommt. Die Reihenfolge richtet sich nach euren Wünschen (Issues und 👍 in [Discussions → Ideas](https://github.com/Mastershort/neonplan3d/discussions/categories/ideas)) und kann sich ändern. Feste Termine gibt es bewusst nicht – eine Funktion kommt, wenn sie gut ist. Alles läuft weiter auch auf alten, schwachen Wandtablets.
+Was als Nächstes kommt. Die Reihenfolge richtet sich nach euren Wünschen (Issues und 👍 in [Discussions → Ideas](https://github.com/sinanhrrck/heimplan3d/discussions/categories/ideas)) und kann sich ändern. Feste Termine gibt es bewusst nicht – eine Funktion kommt, wenn sie gut ist. Alles läuft weiter auch auf alten, schwachen Wandtablets.
 
 **Grundsatz:** Alles, was du brauchst, um dein Zuhause abzubilden und zu bedienen, bleibt kostenlos. Sicherheit (Rauch, Wasser, Alarm, Regenwarnung) ist immer kostenlos. Bezahlt werden zusätzliche Möbel-Packs und Pro-Erweiterungen mit besonderen Live-Effekten – einmal, ohne Abo, und was installiert ist, läuft für immer.
 

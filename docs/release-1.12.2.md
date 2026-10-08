@@ -16,11 +16,11 @@ A small round of fixes, mostly around roofs and attics.
 - Entity choices say how many more entries there are ("… +23 · type to search"); for a parking spot's presence, GPS trackers (the car's own integration, a phone) come before a router's many network trackers (#227 by twynne).
 - The star menu closes when you tap into the 3D view, on a room or switch floors; while the search is open the eye button steps aside (#220 by daene85).
 - **Heatmap:** with the temperature, humidity or CO₂ view on, garden lamps keep their light and room lamps a soft glow (discussion #205 by 1970lexi).
-- **Clear message for add-ons that need a newer version:** installing a Pro add-on on an older NeonPlan 3D now says "please update NeonPlan 3D first" instead of a cryptic error (#218 by twynne).
+- **Clear message for add-ons that need a newer version:** installing a Pro add-on on an older HeimPlan 3D now says "please update HeimPlan 3D first" instead of a cryptic error (#218 by twynne).
 
 ### How to update
 
-Settings → System → Updates. If NeonPlan 3D is missing there: HACS → NeonPlan 3D → ⋮ → **Update information** → **Download**. Then restart Home Assistant and reload the page (Ctrl+F5).
+Settings → System → Updates. If HeimPlan 3D is missing there: HACS → HeimPlan 3D → ⋮ → **Update information** → **Download**. Then restart Home Assistant and reload the page (Ctrl+F5).
 
 ---
 
@@ -42,8 +42,8 @@ Eine kleine Fehlerrunde, vor allem rund um Dächer und Dachgeschosse.
 - Entitäten-Auswahl: Die Liste sagt, wie viele weitere Einträge es gibt („… +23 · Tippen zum Suchen“); bei der Anwesenheit eines Stellplatzes stehen GPS-Tracker (die Integration des Autos, ein Handy) vor den vielen Netzwerk-Trackern eines Routers (#227 von twynne).
 - Das Sternmenü schließt sich bei einem Tipp in die 3D-Ansicht, auf einen Raum oder beim Etagenwechsel; bei offener Suche macht der Augen-Knopf Platz (#220 von daene85).
 - **Heatmap:** Bei Temperatur-, Feuchte- oder CO₂-Ansicht behalten Gartenlampen ihr Licht und Raumlampen einen sanften Schein (Diskussion #205 von 1970lexi).
-- **Klare Meldung bei Erweiterungen, die eine neuere Version brauchen:** Wer eine Pro-Erweiterung auf einer älteren NeonPlan-3D-Version installiert, liest jetzt „bitte zuerst NeonPlan 3D aktualisieren“ statt einer kryptischen Fehlermeldung (#218 von twynne).
+- **Klare Meldung bei Erweiterungen, die eine neuere Version brauchen:** Wer eine Pro-Erweiterung auf einer älteren HeimPlan-3D-Version installiert, liest jetzt „bitte zuerst HeimPlan 3D aktualisieren“ statt einer kryptischen Fehlermeldung (#218 von twynne).
 
 ### So bekommst du das Update
 
-Einstellungen → System → Updates. Fehlt NeonPlan 3D dort: HACS → NeonPlan 3D → ⋮ → **Informationen aktualisieren** → **Herunterladen**. Danach Home Assistant neu starten und die Seite neu laden (Strg+F5).
+Einstellungen → System → Updates. Fehlt HeimPlan 3D dort: HACS → HeimPlan 3D → ⋮ → **Informationen aktualisieren** → **Herunterladen**. Danach Home Assistant neu starten und die Seite neu laden (Strg+F5).

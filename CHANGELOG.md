@@ -1,8 +1,8 @@
 # Changelog
 
-All notable changes to NeonPlan 3D. The full notes in German and English are on the
-[releases page](https://github.com/Mastershort/neonplan3d/releases). Ideas and votes:
-[Discussions → Ideas](https://github.com/Mastershort/neonplan3d/discussions/categories/ideas).
+All notable changes to HeimPlan 3D. The full notes in German and English are on the
+[releases page](https://github.com/sinanhrrck/heimplan3d/releases). Ideas and votes:
+[Discussions → Ideas](https://github.com/sinanhrrck/heimplan3d/discussions/categories/ideas).
 
 ## 1.12.7
 
@@ -58,8 +58,8 @@ All notable changes to NeonPlan 3D. The full notes in German and English are on 
 
 ### Fixed
 
-- Dashboard card: right after starting the app, the card could show "Custom element doesn't exist: neonplan3d-card" until the sidebar page was opened. The card's script is now also kept in the dashboard resources (storage mode), so dashboards wait for it; an older copy of the script there is pointed to the current one (#252 by TheRev-ha, RobertSorgenfrei).
-- Installing a Pro add-on from the shop: NeonPlan 3D now also sends its version in the request, so the shop can answer an installation that is too old with a readable "please update first" message.
+- Dashboard card: right after starting the app, the card could show "Custom element doesn't exist: heimplan3d-card" until the sidebar page was opened. The card's script is now also kept in the dashboard resources (storage mode), so dashboards wait for it; an older copy of the script there is pointed to the current one (#252 by TheRev-ha, RobertSorgenfrei).
+- Installing a Pro add-on from the shop: HeimPlan 3D now also sends its version in the request, so the shop can answer an installation that is too old with a readable "please update first" message.
 - Energy Pro in a house with a single floor: the plant cards (solar, balance) show in the 3D view and the card, not only in the editor (#255 by Kohhal).
 - Energy Pro: a grid connection mounted on a wall – the grid cable starts at its height instead of on the ground, and its pin sits there too (#256 by Kohhal).
 - Solar fields moved to another roof face (e.g. after replacing a flat roof) keep their modules – rows, columns, format and tilt – instead of starting again from a proposal (#258 by rolandarends).
@@ -82,7 +82,7 @@ All notable changes to NeonPlan 3D. The full notes in German and English are on 
 
 - A roof section whose eaves lie below a floor's ceiling now cuts that floor's walls, even when its wall top is set to the ceiling height (discussion #147 by twynne and wouter-b).
 - A house with a single floor shows its roof in 3D; an extra attic floor is no longer needed (discussion #208 by Kohhal).
-- Installing a Pro add-on that is newer than the installed NeonPlan 3D now says "please update NeonPlan 3D first" instead of a cryptic error (#218 by twynne).
+- Installing a Pro add-on that is newer than the installed HeimPlan 3D now says "please update HeimPlan 3D first" instead of a cryptic error (#218 by twynne).
 - Camera Cockpit: the camera wall fits any number of cameras – the grid picks the columns that give the largest tiles, nothing overlaps, and with very many cameras the wall scrolls (#217 by denisb88).
 - Solar fields: the inverter choice shows each inverter's own name (or its entity's name), and an inverter shows which strings feed it (#213 by rolandarends).
 - Garden solar fields stand on the ground floor, no longer on a cellar below it (#192 by denisb88).
@@ -210,7 +210,7 @@ All notable changes to NeonPlan 3D. The full notes in German and English are on 
 
 ### New
 
-- **Roof slopes with knee walls:** when a roof section's top of walls lies below the ceiling of the floor underneath, that floor's walls end under the roof – knee walls at the eaves, gables up to the ridge, inner walls cut by the slope; windows stay below it. Dashed headroom lines (1.5 m, 2 m) in the plan editor (mindmonk's description in [PR #66](https://github.com/Mastershort/neonplan3d/pull/66), discussions #64, #75).
+- **Roof slopes with knee walls:** when a roof section's top of walls lies below the ceiling of the floor underneath, that floor's walls end under the roof – knee walls at the eaves, gables up to the ridge, inner walls cut by the slope; windows stay below it. Dashed headroom lines (1.5 m, 2 m) in the plan editor (mindmonk's description in [PR #66](https://github.com/sinanhrrck/heimplan3d/pull/66), discussions #64, #75).
 - **Roof stays:** a switch in the view bar (and the card option `roof_fade: false`) keeps the roof on the house while zooming in; in the editor's roof and energy tools it always stays.
 - **Roof windows:** a window motor (Velux, Roto, Fakro as a cover) opens the sash as far as it stands, a name, a warm glow while open or tilted, and a hole in the slope of a roof section so the attic looks out (discussion #47, PR #66 by mindmonk).
 - **Dormers and cross gables:** "+ Dormer" in a section's form puts a dormer on a slope (gable or pent); its depth ends where its ridge meets the slope, the slope opens only where the dormer's roof lies above it (valleys), the cheeks close it, the attic wall rises up to it for the dormer window. A wide dormer with its eaves on the top of walls is a cross gable (a three-gable house). Where sections overlap, the higher roof is the ceiling (discussion #75, PR #66 by mindmonk).
@@ -237,7 +237,7 @@ All notable changes to NeonPlan 3D. The full notes in German and English are on 
 - **Doors without a sensor** can be drawn closed ("Show closed without a sensor" in the door form) instead of half open (discussion #86 by robertkrizovnik).
 - **Card:** `start_view` gives a card a start view of its own, e.g. for a small overview on another dashboard; the editor's start view section shows the line to copy (discussion #89 by karli4711).
 - French, Spanish, Dutch and Italian: the 43 texts added since 1.9.0 (energy setup, tilt angle, icons, help) are translated now; they showed in English.
-- **Hungarian** as the fifth extra language (proofread by kopaszsop, [#51](https://github.com/Mastershort/neonplan3d/issues/51)).
+- **Hungarian** as the fifth extra language (proofread by kopaszsop, [#51](https://github.com/sinanhrrck/heimplan3d/issues/51)).
 - **Module power (Wp)** per solar field instead of the fixed 400 W, for the kWp of fields and strings and the living modules (#99 by denisb88).
 - **Floors apart** lifts the roof off the top floor as well (#101 by rolandarends).
 - **Energy Pro – device holograms:** every device with a power sensor can carry a small glass card (power now, today's kWh, day curve), in the house view and on its floor; "Hologram over the device" in the furniture form; a **Holograms** button in the energy bar hides all cards (card option `holograms`). The first free update of the pack.
@@ -246,30 +246,30 @@ All notable changes to NeonPlan 3D. The full notes in German and English are on 
 
 ### New
 
-- **Own marker symbols:** any Material Design icon (`mdi:…`) for a device or an electric furniture item ([#62](https://github.com/Mastershort/neonplan3d/issues/62)).
-- **Tilt angle sensor** on windows: the sash tilts as far as the sensor reports, with maximum angle, offset and sign ([#15](https://github.com/Mastershort/neonplan3d/issues/15)).
-- **Camera wedge:** can be switched off per camera, and in 3D it ends at the first wall ([discussions #49, #50](https://github.com/Mastershort/neonplan3d/discussions/49)).
-- **Dashboard button** on the card: `dashboard` and `dashboard_label` open another dashboard or view ([discussion #48](https://github.com/Mastershort/neonplan3d/discussions/48)).
-- **Wall heights per part** of a wall that a neighbouring room splits ([#77](https://github.com/Mastershort/neonplan3d/issues/77)).
-- **Light through open walls:** with "No wall" a lamp lights the neighbouring room as if it were one room (idea and fork by Thundras, [discussion #68](https://github.com/Mastershort/neonplan3d/discussions/68)).
+- **Own marker symbols:** any Material Design icon (`mdi:…`) for a device or an electric furniture item ([#62](https://github.com/sinanhrrck/heimplan3d/issues/62)).
+- **Tilt angle sensor** on windows: the sash tilts as far as the sensor reports, with maximum angle, offset and sign ([#15](https://github.com/sinanhrrck/heimplan3d/issues/15)).
+- **Camera wedge:** can be switched off per camera, and in 3D it ends at the first wall ([discussions #49, #50](https://github.com/sinanhrrck/heimplan3d/discussions/49)).
+- **Dashboard button** on the card: `dashboard` and `dashboard_label` open another dashboard or view ([discussion #48](https://github.com/sinanhrrck/heimplan3d/discussions/48)).
+- **Wall heights per part** of a wall that a neighbouring room splits ([#77](https://github.com/sinanhrrck/heimplan3d/issues/77)).
+- **Light through open walls:** with "No wall" a lamp lights the neighbouring room as if it were one room (idea and fork by Thundras, [discussion #68](https://github.com/sinanhrrck/heimplan3d/discussions/68)).
 - **Energy tool, easier to set up:** a setup checklist at the top that jumps to what is missing; "Take over from the energy dashboard" now fills the devices (and creates missing ones); a hint with a one-tap fix when a grid or battery sensor counts the other way round; the hologram also without a solar field (beside the house); the energy bar steps back while the hologram shows; a plain hologram on the tablet level.
 - **Help and feedback:** buttons for a GitHub issue (problem) and a discussion (idea) in the editor's settings and on the Extensions page; manual chapter 6.4 describes Energy Pro.
-- **Shop connection:** activations failed with HTTP 429 for everyone – the shop's web host turns away Home Assistant's default user agent. NeonPlan now sends its own, retries a throttled request twice with a pause (Retry-After respected), spaces out pack downloads, and explains a 429 in plain words.
+- **Shop connection:** activations failed with HTTP 429 for everyone – the shop's web host turns away Home Assistant's default user agent. HeimPlan now sends its own, retries a throttled request twice with a pause (Retry-After respected), spaces out pack downloads, and explains a 429 in plain words.
 - **Energy Pro:** one hologram per plant (a balcony plant with its own inverter gets its own card over its field); home batteries with separate charging and discharging sensors (e.g. Anker Solix) through the new "Charging power" field; meters with separate import and export sensors through "Export power"; the power pickers list every sensor in W or kW, even without a device class.
 
 ### Fixed
 
-- The start view also holds when a floor is opened: the house no longer turns round ([discussion #67](https://github.com/Mastershort/neonplan3d/discussions/67)).
+- The start view also holds when a floor is opened: the house no longer turns round ([discussion #67](https://github.com/sinanhrrck/heimplan3d/discussions/67)).
 - Two windows one above the other both cut their hole into the wall (reported by Thundras).
-- iPad: the "Add floor" menu stays inside the sidebar ([#85](https://github.com/Mastershort/neonplan3d/issues/85)).
+- iPad: the "Add floor" menu stays inside the sidebar ([#85](https://github.com/sinanhrrck/heimplan3d/issues/85)).
 
 ## 1.9.0
 
 ### New
 
-- **Four more languages:** French, Spanish, Dutch and Italian, following the Home Assistant user's language. They come as separate language files fetched only when needed, so the bundles stay small for wall tablets. French was asked for in [#51](https://github.com/Mastershort/neonplan3d/issues/51) (thanks, denisb88).
-- **No wall:** every wall of a room can be left out (button "No wall" in the wall heights), for open floor plans whose rooms are one space but separate areas in Home Assistant ([discussion #68](https://github.com/Mastershort/neonplan3d/discussions/68)).
-- **Start view:** remember the current 3D view in the editor; the 3D view, the card and the kiosk then open the house that way, e.g. from the garden side ([discussion #67](https://github.com/Mastershort/neonplan3d/discussions/67)).
+- **Four more languages:** French, Spanish, Dutch and Italian, following the Home Assistant user's language. They come as separate language files fetched only when needed, so the bundles stay small for wall tablets. French was asked for in [#51](https://github.com/sinanhrrck/heimplan3d/issues/51) (thanks, denisb88).
+- **No wall:** every wall of a room can be left out (button "No wall" in the wall heights), for open floor plans whose rooms are one space but separate areas in Home Assistant ([discussion #68](https://github.com/sinanhrrck/heimplan3d/discussions/68)).
+- **Start view:** remember the current 3D view in the editor; the 3D view, the card and the kiosk then open the house that way, e.g. from the garden side ([discussion #67](https://github.com/sinanhrrck/heimplan3d/discussions/67)).
 - **Energy tool:** the **electricity meter** (grid sensor, shows import/export) and the **grid connection** (where the cable to the utility leaves the plot) as energy devices; an **Energy balance** section with the sensors of the house, taken from the devices in the plan or from Home Assistant's energy dashboard; several inverters and batteries with their own sensors; **models** for inverters (wall, slim, hybrid) and batteries (tower, wall, compact). The hidden energy settings and the meter tool are gone in favour of this.
 - **Names:** every piece of furniture and every energy device can carry its own name, shown in lists, forms and on its pin in 3D.
 - Groundwork for the coming Pro add-on **Energy Pro** (power-flow cables, living solar modules, glass hologram): built in and locked until the add-on is released.
@@ -278,7 +278,7 @@ All notable changes to NeonPlan 3D. The full notes in German and English are on 
 
 ### Fixed
 
-- Entities without a registry entry (set up in YAML without a unique ID, e.g. USB cameras) can be placed: they show up under "without area" ([#56](https://github.com/Mastershort/neonplan3d/issues/56)).
+- Entities without a registry entry (set up in YAML without a unique ID, e.g. USB cameras) can be placed: they show up under "without area" ([#56](https://github.com/sinanhrrck/heimplan3d/issues/56)).
 
 ## 1.8.0
 
@@ -294,21 +294,21 @@ All notable changes to NeonPlan 3D. The full notes in German and English are on 
 
 ### New
 
-- **Ask before switching for blinds and garage doors:** open, close and positions ask first in the quick menu and the room panel; a swipe on the marker no longer moves them ([discussion #36](https://github.com/Mastershort/neonplan3d/discussions/36)). Devices that ask first no longer react to a swipe either.
-- **Status sensors on furniture:** a 3D printer's print status (or any enum status sensor) can be linked; the item counts as active while it prints or runs ([#41](https://github.com/Mastershort/neonplan3d/issues/41)).
-- **Worktop:** a free top without a base, its height is the top edge ([discussion #37](https://github.com/Mastershort/neonplan3d/discussions/37)).
+- **Ask before switching for blinds and garage doors:** open, close and positions ask first in the quick menu and the room panel; a swipe on the marker no longer moves them ([discussion #36](https://github.com/sinanhrrck/heimplan3d/discussions/36)). Devices that ask first no longer react to a swipe either.
+- **Status sensors on furniture:** a 3D printer's print status (or any enum status sensor) can be linked; the item counts as active while it prints or runs ([#41](https://github.com/sinanhrrck/heimplan3d/issues/41)).
+- **Worktop:** a free top without a base, its height is the top edge ([discussion #37](https://github.com/sinanhrrck/heimplan3d/discussions/37)).
 
 ## 1.6.2
 
 ### Fixed
 
-- The 3D view did not load on older iPads (iOS 15 and 16) with "SyntaxError: Unexpected token '{'"; the bundles are now built for Safari 15 and newer ([#42](https://github.com/Mastershort/neonplan3d/issues/42)).
+- The 3D view did not load on older iPads (iOS 15 and 16) with "SyntaxError: Unexpected token '{'"; the bundles are now built for Safari 15 and newer ([#42](https://github.com/sinanhrrck/heimplan3d/issues/42)).
 
 ## 1.6.1
 
 ### Fixed
 
-- A table lamp, floor lamp or uplight with a height above the floor set by hand now moves the lamp itself, not only its selection box ([#20](https://github.com/Mastershort/neonplan3d/issues/20)).
+- A table lamp, floor lamp or uplight with a height above the floor set by hand now moves the lamp itself, not only its selection box ([#20](https://github.com/sinanhrrck/heimplan3d/issues/20)).
 - Heatmap and room panel with °F: sensors in °F are converted, the legend and values show Home Assistant's unit.
 - Overlapping floor openings are cut as one outline (an L-shaped opening) instead of breaking the floor.
 - A floor opening snapped to the room's edge is cut instead of being reported as outside the room.
@@ -325,7 +325,7 @@ All notable changes to NeonPlan 3D. The full notes in German and English are on 
 ### New
 
 - **New in the shop** on the Extensions page (with a shop key) and a dot on the tab.
-- **Loyalty discount** code for further purchases, shown in NeonPlan 3D.
+- **Loyalty discount** code for further purchases, shown in HeimPlan 3D.
 - The Extensions page shows once what a pack update brought.
 - Screens and status lights of pack furniture can link a light (glow in its colour) or a switch.
 

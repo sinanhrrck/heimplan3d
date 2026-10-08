@@ -1,10 +1,10 @@
-// Builds the two bundles into custom_components/neonplan3d/frontend and checks the size budgets.
+// Builds the two bundles into custom_components/heimplan3d/frontend and checks the size budgets.
 
 import { build, context } from "esbuild";
 import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync } from "node:fs";
 
-const out = "../custom_components/neonplan3d/frontend";
+const out = "../custom_components/heimplan3d/frontend";
 const watch = process.argv.includes("--watch");
 
 const common = {
@@ -19,7 +19,7 @@ const common = {
   logLevel: "info",
 };
 
-const viewerConfig = { ...common, entryPoints: ["src/viewer/viewer3d.ts"], outfile: `${out}/neonplan3d-3d.js` };
+const viewerConfig = { ...common, entryPoints: ["src/viewer/viewer3d.ts"], outfile: `${out}/heimplan3d-3d.js` };
 // the card's visual editor only loads in the dashboard's card dialog
 // the language files (lang/*.json) are fetched with a hash of their content, so a new text is never stale
 const LANGS = ["fr", "es", "nl", "it", "hu", "da", "sv", "nb", "nn", "fi", "cs", "pl", "ro", "sl"];
@@ -27,25 +27,25 @@ const langHash = createHash("sha256")
   .update(LANGS.map((l) => (existsSync(`lang/${l}.json`) ? readFileSync(`lang/${l}.json`) : "")).join("\n"))
   .digest("hex")
   .slice(0, 12);
-const cardEditorConfig = { ...common, entryPoints: ["src/card-editor.ts"], outfile: `${out}/neonplan3d-card-editor.js`, define: { __FP3D_LANG_HASH__: JSON.stringify(langHash) } };
+const cardEditorConfig = { ...common, entryPoints: ["src/card-editor.ts"], outfile: `${out}/heimplan3d-card-editor.js`, define: { __FP3D_LANG_HASH__: JSON.stringify(langHash) } };
 // the editor is only needed by admins who open it, so it is a bundle of its own as well
 // (it draws furniture previews with the 3D bundle, so it knows that bundle's hash too)
 const editorConfig = (viewerHash) => ({
   ...common,
   entryPoints: ["src/components/editor.ts"],
-  outfile: `${out}/neonplan3d-editor.js`,
+  outfile: `${out}/heimplan3d-editor.js`,
   define: { __FP3D_VIEWER_HASH__: JSON.stringify(viewerHash), __FP3D_LANG_HASH__: JSON.stringify(langHash) },
 });
 // the time travel (Pro) only loads when it starts; its texts come from the main bundle
-const timeTravelConfig = { ...common, entryPoints: ["src/timetravel/entry.ts"], outfile: `${out}/neonplan3d-timetravel.js` };
+const timeTravelConfig = { ...common, entryPoints: ["src/timetravel/entry.ts"], outfile: `${out}/heimplan3d-timetravel.js` };
 // The main bundle loads the 3D bundle with a hash of its content in the URL, so a new 3D bundle is
 // never taken from the browser cache (the integration version only changes after a restart).
 // the frontend knows its own version, to notice a backend that still runs an older one
-const version = JSON.parse(readFileSync("../custom_components/neonplan3d/manifest.json", "utf8")).version;
+const version = JSON.parse(readFileSync("../custom_components/heimplan3d/manifest.json", "utf8")).version;
 const mainConfig = (viewerHash, editorHash, cardEditorHash, timeTravelHash) => ({
   ...common,
   entryPoints: ["src/main.ts"],
-  outfile: `${out}/neonplan3d.js`,
+  outfile: `${out}/heimplan3d.js`,
   define: {
     __FP3D_VIEWER_HASH__: JSON.stringify(viewerHash),
     __FP3D_EDITOR_HASH__: JSON.stringify(editorHash),
@@ -79,7 +79,7 @@ function copyFonts() {
 
 // raised 2026-10-06 for the 1.12 round (outdoor round, hip-end solar, marker names): still small enough for old wall tablets;
 // main raised to 440 KB on 2026-10-08 for the time travel's switch, texts and read-only guards (its own code loads lazily), to 450 KB the same day for room to fix things
-const BUDGET = { "neonplan3d.js": 450 * 1024, "neonplan3d-timetravel.js": 80 * 1024, "neonplan3d-3d.js": 740 * 1024, "neonplan3d-editor.js": 540 * 1024, "neonplan3d-card-editor.js": 170 * 1024 };
+const BUDGET = { "heimplan3d.js": 450 * 1024, "heimplan3d-timetravel.js": 80 * 1024, "heimplan3d-3d.js": 740 * 1024, "heimplan3d-editor.js": 540 * 1024, "heimplan3d-card-editor.js": 170 * 1024 };
 
 copyFonts();
 if (watch) {

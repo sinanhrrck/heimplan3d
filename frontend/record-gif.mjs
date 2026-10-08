@@ -70,13 +70,13 @@ const turn = async (dx, steps, y = 470) => {
 // the lights of the ground floor go off and come back on (through the demo's Home Assistant mock)
 const lights = (service) =>
   page.evaluate((service) => {
-    const hass = document.querySelector("neonplan3d-panel").hass;
+    const hass = document.querySelector("heimplan3d-panel").hass;
     const ids = Object.keys(hass.states).filter((id) => id.startsWith("light.") && hass.areas[hass.entities[id]?.area_id]?.floor_id === "erdgeschoss");
     hass.callService("light", service, { entity_id: ids });
   }, service);
 
 // the star above the magnifier: the central menu of the 3D view
-const view = () => 'document.querySelector("neonplan3d-panel").shadowRoot.querySelector("fp3d-view3d")';
+const view = () => 'document.querySelector("heimplan3d-panel").shadowRoot.querySelector("fp3d-view3d")';
 const central = (open) => page.evaluate((code, open) => {
   const v = new Function("return " + code)();
   v._central = open;

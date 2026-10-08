@@ -110,7 +110,7 @@ export class Session implements TimeTravelSession {
         const statIds = req.stats.slice(i * STAT_BATCH, (i + 1) * STAT_BATCH);
         days.push(
           await live.callWS<WireDay>({
-            type: "neonplan3d/timetravel/history",
+            type: "heimplan3d/timetravel/history",
             start_time: this.start / 1000,
             end_time: this.end / 1000,
             entity_ids: entityIds,

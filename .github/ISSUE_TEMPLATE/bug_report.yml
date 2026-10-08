@@ -10,8 +10,8 @@ body:
   - type: input
     id: version
     attributes:
-      label: NeonPlan 3D version / Version
-      description: HACS → NeonPlan 3D, or Settings → Devices & services → NeonPlan 3D.
+      label: HeimPlan 3D version / Version
+      description: HACS → HeimPlan 3D, or Settings → Devices & services → HeimPlan 3D.
       placeholder: "1.2.0"
     validations:
       required: true

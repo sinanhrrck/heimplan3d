@@ -36,8 +36,8 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 await sleep(2500);
 
 const T = {
-  de: ["Energie Pro – dein Strom, sichtbar", "Glas-Hologramm mit Live-Bilanz", "Leitungen zeigen, wohin der Strom fließt", "Module leben mit der Sonne", "Geräte-Hologramme – auch ohne Solaranlage", "Antippen klappt zusammen", "Läuft auch auf alten Wandtablets · mastershort.de/neonplan3d"],
-  en: ["Energy Pro – your power, made visible", "Glass hologram with the live balance", "Cables show where the power flows", "Modules live with the sun", "Device holograms – also without solar", "Tap to fold", "Runs on old wall tablets too · mastershort.de/neonplan3d"],
+  de: ["Energie Pro – dein Strom, sichtbar", "Glas-Hologramm mit Live-Bilanz", "Leitungen zeigen, wohin der Strom fließt", "Module leben mit der Sonne", "Geräte-Hologramme – auch ohne Solaranlage", "Antippen klappt zusammen", "Läuft auch auf alten Wandtablets · mastershort.de/heimplan3d"],
+  en: ["Energy Pro – your power, made visible", "Glass hologram with the live balance", "Cables show where the power flows", "Modules live with the sun", "Device holograms – also without solar", "Tap to fold", "Runs on old wall tablets too · mastershort.de/heimplan3d"],
 }[lang];
 const captions = [];
 let n = 0;
@@ -67,12 +67,12 @@ const clickText = (text) =>
   }, text);
 const inEditor = (code) =>
   page.evaluate((code) => {
-    const e = document.querySelector("neonplan3d-panel").shadowRoot.querySelector("fp3d-editor");
+    const e = document.querySelector("heimplan3d-panel").shadowRoot.querySelector("fp3d-editor");
     new Function("e", code)(e);
   }, code);
 const view = (cam) =>
   page.evaluate((cam) => {
-    const v = document.querySelector("neonplan3d-panel").shadowRoot.querySelector("fp3d-view3d");
+    const v = document.querySelector("heimplan3d-panel").shadowRoot.querySelector("fp3d-view3d");
     const viewer = Object.values(v).find((x) => x && x.floors && x.floorMap);
     Object.assign(viewer.controls.view, cam);
     viewer.invalidate();
@@ -89,7 +89,7 @@ const glide = async (from, to, steps, wait = 60) => {
 };
 const tapHolo = () =>
   page.evaluate(() => {
-    const v = document.querySelector("neonplan3d-panel").shadowRoot.querySelector("fp3d-view3d");
+    const v = document.querySelector("heimplan3d-panel").shadowRoot.querySelector("fp3d-view3d");
     v.renderRoot.querySelector('.fp3d-holo[data-holo="0"]')?.click();
   });
 

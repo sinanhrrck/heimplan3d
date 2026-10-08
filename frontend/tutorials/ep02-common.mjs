@@ -11,7 +11,7 @@ export const PLAN = join(import.meta.dirname, "assets", "bauplan-l.png");
 export const PTS = JSON.parse(readFileSync(join(import.meta.dirname, "assets", "bauplan-l.json"), "utf-8"));
 /** The picture's true width in the plan (17.5 m at 100 px per metre) and its turn. */
 export const PLAN_WIDTH = 17.5;
-export const VERSION = `<br><span style="font-size:20px;opacity:.7">aufgenommen mit NeonPlan 3D ${appVersion()}</span>`;
+export const VERSION = `<br><span style="font-size:20px;opacity:.7">aufgenommen mit HeimPlan 3D ${appVersion()}</span>`;
 
 /** The traced rooms (plan metres; the house corner at 0/0). */
 export const ROOMS = {
@@ -44,7 +44,7 @@ export function helpers(R) {
   const editorEval = (fn, ...args) =>
     R.page.evaluate(
       (src, ...args) => {
-        const e = document.querySelector("neonplan3d-panel").shadowRoot.querySelector("fp3d-editor");
+        const e = document.querySelector("heimplan3d-panel").shadowRoot.querySelector("fp3d-editor");
         return new Function("e", "args", src)(e, args);
       },
       fn,
@@ -351,7 +351,7 @@ export async function traceHouse(R, { walls = true, openings = false } = {}) {
   await tap(R, { text: "Erdgeschoss", nth: 0 });
   await R.sleep(500);
   const png = "data:image/png;base64," + readFileSync(PLAN).toString("base64");
-  await R.page.evaluate((png) => window.fp3dPanel.hass.callWS({ type: "neonplan3d/image/set", image_id: "img_plan", data: png }), png);
+  await R.page.evaluate((png) => window.fp3dPanel.hass.callWS({ type: "heimplan3d/image/set", image_id: "img_plan", data: png }), png);
   await h.editorEval(
     `const [rooms, walls, openings, W, asp, u, v, a] = args;
      const H = W * asp, r = a * Math.PI / 180, L = [u * W - W / 2, v * H - H / 2];

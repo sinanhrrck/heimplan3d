@@ -1,10 +1,10 @@
-# NeonPlan 3D – Anleitung
+# HeimPlan 3D – Anleitung
 
 🇩🇪 Deutsch · [🇬🇧 English](manual.md)
 
-NeonPlan 3D zeichnet dein Zuhause direkt in Home Assistant und zeigt es als 3D-Modell im Neon-Look. Lichter leuchten in ihrer Farbe, Rollläden fahren, Fenster kippen, Türen schwingen auf, Kameras schauen in den Raum und der Fernseher zeigt, was läuft. Alles läuft lokal in Home Assistant, ohne Cloud und ohne externe Programme, und ist für Wandtablets gebaut.
+HeimPlan 3D zeichnet dein Zuhause direkt in Home Assistant und zeigt es als 3D-Modell im Neon-Look. Lichter leuchten in ihrer Farbe, Rollläden fahren, Fenster kippen, Türen schwingen auf, Kameras schauen in den Raum und der Fernseher zeigt, was läuft. Alles läuft lokal in Home Assistant, ohne Cloud und ohne externe Programme, und ist für Wandtablets gebaut.
 
-Diese Anleitung beschreibt alle Funktionen der aktuellen Version. Was sich in welcher Version geändert hat, steht im [Changelog](../CHANGELOG.md) und auf der [Release-Seite](https://github.com/Mastershort/neonplan3d/releases). Die Bilder stammen aus der Demo mit erfundenen Daten.
+Diese Anleitung beschreibt alle Funktionen der aktuellen Version. Was sich in welcher Version geändert hat, steht im [Changelog](../CHANGELOG.md) und auf der [Release-Seite](https://github.com/sinanhrrck/heimplan3d/releases). Die Bilder stammen aus der Demo mit erfundenen Daten.
 
 ![Das Haus in der 3D-Ansicht](images/view-house.jpg)
 
@@ -20,7 +20,7 @@ Diese Anleitung beschreibt alle Funktionen der aktuellen Version. Was sich in we
 6. [Pro-Erweiterungen](#6-pro-erweiterungen)
 7. [Erweiterungen, Shop und Möbel-Packs](#7-erweiterungen-shop-und-möbel-packs)
 8. [Die Dashboard-Karte](#8-die-dashboard-karte)
-9. [NeonPlan 3D auf dem Wandtablet](#9-neonplan-3d-auf-dem-wandtablet)
+9. [HeimPlan 3D auf dem Wandtablet](#9-neonplan-3d-auf-dem-wandtablet)
 10. [Sicherung und Umzug](#10-sicherung-und-umzug)
 11. [Daten und Datenschutz](#11-daten-und-datenschutz)
 12. [Häufige Fragen und Fehlerbehebung](#12-häufige-fragen-und-fehlerbehebung)
@@ -37,34 +37,34 @@ Diese Anleitung beschreibt alle Funktionen der aktuellen Version. Was sich in we
 
 ### Über HACS
 
-[![NeonPlan 3D in HACS öffnen](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Mastershort&repository=neonplan3d&category=integration)
+[![HeimPlan 3D in HACS öffnen](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Mastershort&repository=heimplan3d&category=integration)
 
-Der Knopf öffnet NeonPlan 3D direkt in HACS deiner Installation. Von Hand geht es so:
+Der Knopf öffnet HeimPlan 3D direkt in HACS deiner Installation. Von Hand geht es so:
 
 1. In Home Assistant **HACS** öffnen.
 2. Oben rechts **⋮ → Benutzerdefinierte Repositories** wählen.
-3. `https://github.com/Mastershort/neonplan3d` eintragen, Typ **Integration**, hinzufügen.
-4. **NeonPlan 3D** suchen, installieren und Home Assistant neu starten.
-5. **Einstellungen → Geräte & Dienste → Integration hinzufügen → NeonPlan 3D**, oder direkt über diesen Knopf:
+3. `https://github.com/sinanhrrck/heimplan3d` eintragen, Typ **Integration**, hinzufügen.
+4. **HeimPlan 3D** suchen, installieren und Home Assistant neu starten.
+5. **Einstellungen → Geräte & Dienste → Integration hinzufügen → HeimPlan 3D**, oder direkt über diesen Knopf:
 
-   [![NeonPlan 3D einrichten](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=neonplan3d)
+   [![HeimPlan 3D einrichten](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=heimplan3d)
 
-Danach steht **NeonPlan 3D** in der Seitenleiste. Die Dashboard-Karte ist ebenfalls sofort verfügbar, eine Ressource musst du nicht eintragen.
+Danach steht **HeimPlan 3D** in der Seitenleiste. Die Dashboard-Karte ist ebenfalls sofort verfügbar, eine Ressource musst du nicht eintragen.
 
 ### Von Hand
 
-Den Ordner `custom_components/neonplan3d` aus dem Repository nach `config/custom_components/` kopieren, Home Assistant neu starten und die Integration wie oben hinzufügen.
+Den Ordner `custom_components/heimplan3d` aus dem Repository nach `config/custom_components/` kopieren, Home Assistant neu starten und die Integration wie oben hinzufügen.
 
 ### Updates
 
-HACS meldet neue Versionen von selbst. Nach jedem Update Home Assistant neu starten. Bis dahin zeigt NeonPlan 3D oben einen Hinweis, dass ein Neustart aussteht. Dein Plan bleibt bei Updates immer erhalten, auch wenn du die Integration entfernst und neu hinzufügst.
+HACS meldet neue Versionen von selbst. Nach jedem Update Home Assistant neu starten. Bis dahin zeigt HeimPlan 3D oben einen Hinweis, dass ein Neustart aussteht. Dein Plan bleibt bei Updates immer erhalten, auch wenn du die Integration entfernst und neu hinzufügst.
 
 ---
 
 ## 2. In zehn Minuten zum ersten 3D-Plan
 
-1. **NeonPlan 3D** in der Seitenleiste öffnen und oben auf **Editor** wechseln.
-2. Rechts **Etage hinzufügen** wählen. Hast du in Home Assistant Etagen angelegt, bietet NeonPlan 3D sie direkt an.
+1. **HeimPlan 3D** in der Seitenleiste öffnen und oben auf **Editor** wechseln.
+2. Rechts **Etage hinzufügen** wählen. Hast du in Home Assistant Etagen angelegt, bietet HeimPlan 3D sie direkt an.
 3. Gibt es Bereiche auf der Etage, legt **„… Räume aus HA-Bereichen anlegen“** für jeden Bereich einen Raum an. Ziehe die Räume dann an die richtige Stelle und passe die Ecken an. Alternativ zeichnest du mit **Rechteck** oder **Freie Form**.
 4. Mit **Tür & Fenster** auf eine Wand tippen, um Türen und Fenster einzusetzen.
 5. Einen Raum antippen und rechts unter **Geräte** bei den gewünschten Geräten **Platzieren** tippen, etwa Lichter, Rollläden, Thermostate, Media Player und Sensoren des Bereichs. Unter der Liste setzt **Alle … platzieren** nach einer Rückfrage alle Hauptgeräte auf einmal.
@@ -87,7 +87,7 @@ Oben gibt es drei Reiter:
 
 Zusätzlich gibt es die Dashboard-Karte, die dieselbe 3D-Ansicht in jedes Dashboard bringt. Mehr dazu in [Kapitel 8](#8-die-dashboard-karte).
 
-**Sprache:** NeonPlan folgt der Sprache deines Home-Assistant-Nutzers (Profil → Sprache). Deutsch und Englisch sind eingebaut; Französisch, Spanisch, Niederländisch, Italienisch, Ungarisch, Dänisch, Schwedisch, Norwegisch (Bokmål und Nynorsk), Finnisch, Tschechisch, Polnisch, Rumänisch und Slowenisch werden bei Bedarf nachgeladen, so bleiben die Bundles für Wandtablets klein. Fehlt ein Text in einer Sprache, erscheint er auf Englisch.
+**Sprache:** HeimPlan folgt der Sprache deines Home-Assistant-Nutzers (Profil → Sprache). Deutsch und Englisch sind eingebaut; Französisch, Spanisch, Niederländisch, Italienisch, Ungarisch, Dänisch, Schwedisch, Norwegisch (Bokmål und Nynorsk), Finnisch, Tschechisch, Polnisch, Rumänisch und Slowenisch werden bei Bedarf nachgeladen, so bleiben die Bundles für Wandtablets klein. Fehlt ein Text in einer Sprache, erscheint er auf Englisch.
 
 ---
 
@@ -144,7 +144,7 @@ Ohne Auswahl zeigt die Seitenleiste die Etagen:
 
 Ein ausgewählter Raum zeigt rechts:
 
-- **Name** und **Bereich**: Die Verknüpfung mit einem Home-Assistant-Bereich ist das Wichtigste. Darüber findet NeonPlan 3D Lichter, Rollläden, Sensoren und Szenen des Raums.
+- **Name** und **Bereich**: Die Verknüpfung mit einem Home-Assistant-Bereich ist das Wichtigste. Darüber findet HeimPlan 3D Lichter, Rollläden, Sensoren und Szenen des Raums.
 - **Bodenbelag**: Holz, Eiche, Fliesen, Teppich, Stein oder Beton erscheinen in 3D als dezentes Muster.
 - **Ansicht als Start des Raums**: Schalte **3D daneben** ein, dreh und zoom den Raum so, wie er sich zeigen soll, und tippe den Knopf. Tippst du den Raum später in 3D an, fliegt die Kamera genau dorthin – Blickwinkel, Zoom und Bildausschnitt. ↺ nimmt das zurück, dann wird der Raum wieder von oben gezeigt.
 - Die Liste **Geräte** des Bereichs, siehe [4.10](#410-geräte).
@@ -215,7 +215,7 @@ Jede Öffnung hat:
 | **Kontakt zweiter Flügel** | Für zweiflügelige Fenster und Türen |
 | **Garagentor** | Ein Garagentor folgt einer Cover-Entität oder einem Kontakt. Der offene Teil liegt dann unter der Decke |
 
-Rollläden und Kontakte ordnet NeonPlan 3D über den Bereich automatisch zu. Du kannst sie jederzeit von Hand ändern.
+Rollläden und Kontakte ordnet HeimPlan 3D über den Bereich automatisch zu. Du kannst sie jederzeit von Hand ändern.
 
 ### 4.8 Möbel
 
@@ -300,7 +300,7 @@ Fernseher, Medienwand, Wohnwand mit TV (die Wohnwand ohne TV ist eine Leuchte: V
 - **Vor dem Schalten nachfragen** und **Symbol in 3D** wie bei Geräten.
 - **Bilder nach Zustand** bei Bildschirmen: eine Pro-Erweiterung, siehe [6.3](#63-bildschirme-live).
 
-Steht dort „automatisch“, sucht NeonPlan 3D die passende Entität im Bereich selbst.
+Steht dort „automatisch“, sucht HeimPlan 3D die passende Entität im Bereich selbst.
 
 ### 4.13 Kameras
 
@@ -332,7 +332,7 @@ Das Möbel **Stellplatz** in der Gruppe Stellplätze markiert, wo ein Auto steht
 
 Das Möbel Saugroboter wird mit der `vacuum`-Entität verknüpft. Saugt der Roboter, fährt er in 3D in Bahnen durch den Raum seiner Station und kehrt danach zurück. Die Bahn ist simuliert, weil Home Assistant die echte Position meist nicht kennt.
 
-Viele Roboter melden aber den Raum, den sie gerade saugen, zum Beispiel Roborock und Dreame mit einem Sensor „Aktueller Raum“. NeonPlan 3D findet diesen Sensor am Gerät des Roboters von selbst; im Feld **Aktueller Raum (Sensor)** kannst du auch einen anderen wählen. Der gemeldete Name wird mit dem Raumnamen und dem Home-Assistant-Bereich verglichen, Groß- und Kleinschreibung und die Schreibweise von Umlauten spielen keine Rolle („Kueche“ passt zu „Küche“). Wechselt der Roboter den Raum, erscheint er in 3D dort und fährt seine Bahnen. Passt kein Raum, bleibt er im Raum seiner Station.
+Viele Roboter melden aber den Raum, den sie gerade saugen, zum Beispiel Roborock und Dreame mit einem Sensor „Aktueller Raum“. HeimPlan 3D findet diesen Sensor am Gerät des Roboters von selbst; im Feld **Aktueller Raum (Sensor)** kannst du auch einen anderen wählen. Der gemeldete Name wird mit dem Raumnamen und dem Home-Assistant-Bereich verglichen, Groß- und Kleinschreibung und die Schreibweise von Umlauten spielen keine Rolle („Kueche“ passt zu „Küche“). Wechselt der Roboter den Raum, erscheint er in 3D dort und fährt seine Bahnen. Passt kein Raum, bleibt er im Raum seiner Station.
 
 Seine Bahnen machen einen Bogen um Möbel, die auf dem Boden stehen: Schränke, Sofas, Betten, Küchenzeilen und Geräte. Unter Tischen, Schreibtischen, Stühlen, Hockern und Bänken fährt er durch, ebenso über Teppiche und unter hängenden Möbeln wie Oberschränken.
 
@@ -366,7 +366,7 @@ Mit **Außen** ziehst du Rasen, Terrasse, Weg, Einfahrt, Pool, Beet, Hecke oder 
 
 Ein einfaches Haus bekommt unter **Einstellungen → Dach** ein Flach- oder Satteldach über das ganze oberste Geschoss. Für alles andere – ein Haus in L- oder T-Form, ein Wohnhaus mit Scheune, ein Anbau mit Pultdach, ein Dach, das auf einer Seite tief herunterzieht – baust du das Dach aus **Dachflächen**.
 
-- Wähle unter **Dach** die Option **Dachflächen (frei)** oder das Werkzeug **Dach**. Beim ersten Mal schlägt NeonPlan 3D die Dachflächen aus deinen Räumen vor: je Etage die Teile, über denen keine höhere Etage liegt, jeweils mit Satteldach. Danach passt du sie an.
+- Wähle unter **Dach** die Option **Dachflächen (frei)** oder das Werkzeug **Dach**. Beim ersten Mal schlägt HeimPlan 3D die Dachflächen aus deinen Räumen vor: je Etage die Teile, über denen keine höhere Etage liegt, jeweils mit Satteldach. Danach passt du sie an.
 - Im Werkzeug **Dach** ziehst du eine neue Dachfläche im Plan auf. Antippen wählt eine aus, ziehen verschiebt sie, die Ecken ändern die Größe. Oben wählst du die Etage, deren Räume im Plan liegen. Daneben öffnet sich die 3D-Ansicht mit dem ganzen Haus, so siehst du jede Änderung sofort.
 - Mit dem Schloss **🔓 Fixieren** (oder der Taste **L**) sitzt eine fertige Dachfläche fest und verrutscht nicht mehr beim Antippen; **🔒 Grundriss** sperrt alle Dachflächen mit.
 - Jede Dachfläche hat eine **Form** – Sattel, Walm, Krüppelwalm (oben abgewalmter Giebel), Zelt (vier Flächen zur Spitze), Mansard (steil unten, flach oben), Pult, Flach und Attika (Flachdach mit Brüstung) – und eine **Firstrichtung** (↔ oder ↕).
@@ -420,7 +420,7 @@ Unter dem Feld steht die Leistung, gerechnet mit 400 W je Modul. Die Grundriss-S
 
 **Stromzähler und Netzanschluss:** Der **Stromzähler** ist das vierte Energiegerät; er bekommt den Netzsensor (W, + = Bezug) und zeigt „Netzbezug 420 W“ oder „Einspeisung 900 W“. Der **Netzanschluss** markiert, wo die Leitung zum Stromanbieter das Grundstück verlässt, etwa am Ende der Einfahrt; er wird dort angelegt, wo die Leitung von selbst enden würde, und lässt sich im Grundriss verschieben. Jedes Gerät hat im Formular ein Feld **Name** („Wechselrichter Nord“), das in Liste, Formular und an den Pins in 3D erscheint, und Wechselrichter und Speicher ein **Modell**: Wandgerät, schmal und hoch oder Hybrid; Turm, Wandspeicher oder kompakter Balkonspeicher. Mehrere Wechselrichter und Speicher gehen, zum Beispiel eine große Anlage und ein Balkonkraftwerk: Jeder bekommt seinen eigenen Sensor.
 
-**Energiebilanz:** Netz, Solar und Akku holt NeonPlan von den Geräten im Plan (Zähler, Wechselrichter, Speicher; mehrere werden zusammengezählt, Ladestände gemittelt). Im Abschnitt **Energiebilanz** wählst du andere Sensoren, drehst Vorzeichen um und gibst den Hausverbrauch an. **Aus dem Energie-Dashboard übernehmen** holt die Sensoren, die du im Energie-Dashboard von Home Assistant eingetragen hast: zu jeder Energie-Statistik den Leistungssensor desselben Geräts. Prüfe danach die Vorzeichen.
+**Energiebilanz:** Netz, Solar und Akku holt HeimPlan von den Geräten im Plan (Zähler, Wechselrichter, Speicher; mehrere werden zusammengezählt, Ladestände gemittelt). Im Abschnitt **Energiebilanz** wählst du andere Sensoren, drehst Vorzeichen um und gibst den Hausverbrauch an. **Aus dem Energie-Dashboard übernehmen** holt die Sensoren, die du im Energie-Dashboard von Home Assistant eingetragen hast: zu jeder Energie-Statistik den Leistungssensor desselben Geräts. Prüfe danach die Vorzeichen.
 
 Ganz unten kündigt eine Karte die kommende Pro-Erweiterung **Energie Pro** an. Alles, was du hier einrichtest, bleibt kostenlos und wird von ihr direkt genutzt.
 
@@ -535,7 +535,7 @@ Ist die Nordrichtung eingestellt, fällt das Sonnenlicht aus `sun.sun` durch die
 
 ![Warnung](images/view-alert-banner.jpg)
 
-NeonPlan 3D warnt kostenlos und ohne Einrichtung:
+HeimPlan 3D warnt kostenlos und ohne Einrichtung:
 
 | Warnung | Auslöser |
 |---|---|
@@ -591,7 +591,7 @@ Das Wetter rund ums Haus folgt deiner Wetter-Entität:
 | windy | Wind treibt Regen und Schnee schräg |
 | sunny, clear-night | Sonne am Tag, Mond in der Nacht |
 
-Liefert die Entität `cloud_coverage` und `wind_speed`, nutzt NeonPlan 3D diese Werte.
+Liefert die Entität `cloud_coverage` und `wind_speed`, nutzt HeimPlan 3D diese Werte.
 
 ![Schnee](images/view-weather-snow.jpg)
 
@@ -625,7 +625,7 @@ Oben im Werkzeug **Energie** steht die **Einrichtung**: eine Liste, die abhakt, 
 
 1. **Solarfeld:** + Solarfeld legt Module auf die sonnigste Dachfläche (4.20).
 2. **Geräte:** Stromzähler, Wechselrichter, Stromspeicher, Wallbox und Netzanschluss anlegen. Sie kommen von selbst in Garage oder Technikraum und lassen sich im Grundriss verschieben.
-3. **Sensoren:** Am einfachsten **Aus dem Energie-Dashboard übernehmen** (Abschnitt Energiebilanz): NeonPlan nimmt die Statistiken deines Energie-Dashboards, sucht zu jeder den Leistungssensor desselben Geräts und trägt ihn beim Zähler (Netz), Wechselrichter (PV) und Speicher (Leistung, Ladestand) ein. Fehlende Geräte werden dabei angelegt. Sonst wählst du die Sensoren im Formular jedes Geräts von Hand: Zähler = Netzleistung in Watt (+ = Bezug), Wechselrichter = PV-Leistung, Speicher = Leistung (+ = Entladen) und Ladestand in Prozent, Wallbox = Leistung und Status.
+3. **Sensoren:** Am einfachsten **Aus dem Energie-Dashboard übernehmen** (Abschnitt Energiebilanz): HeimPlan nimmt die Statistiken deines Energie-Dashboards, sucht zu jeder den Leistungssensor desselben Geräts und trägt ihn beim Zähler (Netz), Wechselrichter (PV) und Speicher (Leistung, Ladestand) ein. Fehlende Geräte werden dabei angelegt. Sonst wählst du die Sensoren im Formular jedes Geräts von Hand: Zähler = Netzleistung in Watt (+ = Bezug), Wechselrichter = PV-Leistung, Speicher = Leistung (+ = Entladen) und Ladestand in Prozent, Wallbox = Leistung und Status.
 4. **Vorzeichen prüfen:** Meldet der Zähler nachts „Einspeisung“ oder lädt der Speicher ohne Sonne, zählt ein Sensor andersherum. Die Energiebilanz sagt das und bietet **Vorzeichen umkehren** an.
 5. **Netzanschluss** (optional): Dorthin läuft die Netzleitung, zum Beispiel ans Ende der Einfahrt. Ohne ihn endet sie am Rand deiner Außenflächen.
 
@@ -673,7 +673,7 @@ Klang & Kino bringt die Musik ins 3D-Haus. Voraussetzung ist ein Lautsprecher im
 
 **Wandtablet:** Auf der Tablet-Stufe laufen die Ringe mit halber Bildrate, die Karten ohne Glaseffekt.
 
-**Welche Lautsprecher passen?** NeonPlan nutzt die Standard-Schnittstelle der Media Player von Home Assistant: Was im Media-Player-Fenster von Home Assistant geht, geht auch hier. Das ist eine Einschätzung nach Dokumentation und Erfahrungen, keine Garantie für jedes Modell:
+**Welche Lautsprecher passen?** HeimPlan nutzt die Standard-Schnittstelle der Media Player von Home Assistant: Was im Media-Player-Fenster von Home Assistant geht, geht auch hier. Das ist eine Einschätzung nach Dokumentation und Erfahrungen, keine Garantie für jedes Modell:
 
 | Integration | Cover und Titel | Lautstärke | Multiroom-Linien |
 |---|---|---|---|
@@ -689,7 +689,7 @@ Was ein Player mitbringen sollte: den Zustand `playing`/`paused`, `media_title` 
 
 **Ein Gerät, ein Player:** Jeder Media Player hat genau eine Karte. Ein Möbel, dem du den Player selbst zugewiesen hast, hat Vorrang vor einem als Gerät platzierten Player. Hast du denselben Lautsprecher doppelt in Home Assistant (etwa einen Echo über Alexa Media Player **und** über Music Assistant, erkennbar an „_2“ am Ende), wähle den, über den du wirklich abspielst – der andere meldet nie „spielt“.
 
-**Echo-Geräte (Alexa Media Player):** Abspielen, Pause und Titelwechsel gehen. Die **Lautstärke** lässt sich je nach Gerät und Version von Alexa Media Player nicht oder nur verzögert setzen, und der neue Wert kommt oft erst Minuten später zurück. Das liegt an der inoffiziellen Amazon-Schnittstelle, nicht an NeonPlan; dieselbe Grenze hat das Media-Player-Fenster von Home Assistant. Echos, die du über Music Assistant steuerst, folgen der Lautstärke in der Regel zuverlässiger.
+**Echo-Geräte (Alexa Media Player):** Abspielen, Pause und Titelwechsel gehen. Die **Lautstärke** lässt sich je nach Gerät und Version von Alexa Media Player nicht oder nur verzögert setzen, und der neue Wert kommt oft erst Minuten später zurück. Das liegt an der inoffiziellen Amazon-Schnittstelle, nicht an HeimPlan; dieselbe Grenze hat das Media-Player-Fenster von Home Assistant. Echos, die du über Music Assistant steuerst, folgen der Lautstärke in der Regel zuverlässiger.
 
 ### 6.6 Auto Pro
 
@@ -697,7 +697,7 @@ Auto Pro holt das Auto in den Plan, so wie es seine Integration meldet (Tesla, V
 
 Auto Pro hängt am **Stellplatz**, nicht am Fahrzeug-Möbel. Steht dein Auto als einfaches Möbel im Plan, macht **In Stellplatz umwandeln** in dessen Formular daraus einen Stellplatz mit diesem Fahrzeug.
 
-**Einrichten:** Im Stellplatz-Formular unten der Abschnitt **Auto Pro**. Wähle unter **Fahrzeug** irgendeine Entität des Autos – NeonPlan findet die übrigen am selben Gerät: Ladestand, Reichweite, Ladeleistung oder Ladezustand, Kabel, Schloss, Klima oder Vorheizen, Standort. Jede Rolle kannst du von Hand setzen oder mit „Keine“ abschalten. Hat der Stellplatz einen Sensor „Auto anwesend“, dient der auch als Ausgangspunkt der Suche.
+**Einrichten:** Im Stellplatz-Formular unten der Abschnitt **Auto Pro**. Wähle unter **Fahrzeug** irgendeine Entität des Autos – HeimPlan findet die übrigen am selben Gerät: Ladestand, Reichweite, Ladeleistung oder Ladezustand, Kabel, Schloss, Klima oder Vorheizen, Standort. Jede Rolle kannst du von Hand setzen oder mit „Keine“ abschalten. Hat der Stellplatz einen Sensor „Auto anwesend“, dient der auch als Ausgangspunkt der Suche.
 
 **Im Haus:** Das Fahrzeug trägt ein **Lichtband** in der Farbe des Ladestands (grün über 50 %, gelb bis 20 %, rot darunter), kräftiger, solange es lädt. Läuft die Klima oder das Vorheizen, glimmt das Auto warm. Der **Pin am Stellplatz** zeigt „78 % · 312 km · ⚡ 7,4 kW · 🔒“. Ist das Auto weg, bleibt der Stellplatz leer und der Pin sagt **unterwegs**, mit der Zone des Trackers, wenn es eine gibt („unterwegs · Arbeit“).
 
@@ -752,7 +752,7 @@ Nicht dabei sind Kamerabilder (der Recorder speichert keine) sowie Personen und 
 
 ![Erweiterungen](images/extensions.jpg)
 
-Der Reiter **✦ Erweiterungen** bündelt alles, was du zu NeonPlan 3D dazubekommen kannst.
+Der Reiter **✦ Erweiterungen** bündelt alles, was du zu HeimPlan 3D dazubekommen kannst.
 
 ### 7.1 Shop-Verbindung
 
@@ -764,11 +764,11 @@ Mit dem ersten Kauf bei mastershort.de bekommst du einen **Lizenzschlüssel** de
 
 Danach:
 
-- **Updates kommen von selbst.** Einmal täglich fragt NeonPlan 3D, ob es neue Käufe oder neuere Versionen gibt, und installiert sie. **Jetzt prüfen** fragt sofort.
+- **Updates kommen von selbst.** Einmal täglich fragt HeimPlan 3D, ob es neue Käufe oder neuere Versionen gibt, und installiert sie. **Jetzt prüfen** fragt sofort.
 - **Ohne Internet läuft alles weiter.** Installierte Packs werden lokal geprüft, der Shop wird dafür nie gebraucht.
 - **Trennen** entfernt den Schlüssel. Installierte Packs bleiben.
 - **Pack-Updates:** Wird ein gekauftes Pack erweitert, zeigt die Seite einmal, was dazugekommen ist.
-- **Neu im Shop:** Mit Shop-Verbindung zeigt die Seite oben die Packs und Pro-Erweiterungen, die du noch nicht hast, mit **NEU** für frische Sachen. Gibt es etwas Neues, leuchtet am Reiter **✦ Erweiterungen** ein kleiner Punkt. Ohne Schlüssel fragt NeonPlan 3D den Shop nie.
+- **Neu im Shop:** Mit Shop-Verbindung zeigt die Seite oben die Packs und Pro-Erweiterungen, die du noch nicht hast, mit **NEU** für frische Sachen. Gibt es etwas Neues, leuchtet am Reiter **✦ Erweiterungen** ein kleiner Punkt. Ohne Schlüssel fragt HeimPlan 3D den Shop nie.
 - **Treuerabatt:** Mit dem ersten Kauf bekommst du einen persönlichen Rabattcode für jedes weitere Pack und jede Pro-Erweiterung (nicht für Bundles). Er steht in der Bestell-Mail, im Kundenkonto und oben unter **Neu im Shop**; ein Tipp auf ein Angebot legt ihn gleich in den Warenkorb.
 
 **Mehrere Installationen:** Ein Schlüssel ist mit höchstens drei Installationen gleichzeitig verbunden. Ziehst du auf neue Hardware um, verbindest du einfach die neue Installation, die älteste fällt dann heraus. Bis zu fünf neue Verbindungen sind pro Jahr möglich. Die **Installations-Kennung** oben ist ein anonymer Fingerabdruck deiner Installation.
@@ -809,9 +809,9 @@ Unten auf der Seite stehen deine installierten Packs mit **Entfernen**. Darunter
 
 ![Karte im Dashboard](images/card-og-dim.jpg)
 
-Die Karte `custom:neonplan3d-card` bringt die 3D-Ansicht in jedes Dashboard. Sie wird automatisch geladen.
+Die Karte `custom:heimplan3d-card` bringt die 3D-Ansicht in jedes Dashboard. Sie wird automatisch geladen.
 
-**Anlegen:** Dashboard bearbeiten, **Karte hinzufügen**, nach „NeonPlan“ suchen. Alle Optionen stellst du im visuellen Editor der Karte ein:
+**Anlegen:** Dashboard bearbeiten, **Karte hinzufügen**, nach „HeimPlan“ suchen. Alle Optionen stellst du im visuellen Editor der Karte ein:
 
 | Abschnitt | Optionen |
 |---|---|
@@ -825,7 +825,7 @@ Die Karte `custom:neonplan3d-card` bringt die 3D-Ansicht in jedes Dashboard. Sie
 In YAML sieht eine Karte so aus. Alle Zeilen außer der ersten sind optional:
 
 ```yaml
-type: custom:neonplan3d-card
+type: custom:heimplan3d-card
 floor: floor_ab12cd34   # eine Etage zeigen (ID aus dem Editor)
 room: room_ab12cd34     # in diesem Raum starten (ID aus dem Editor), z. B. ein Display fürs Kinderzimmer
 height: 420             # Höhe in Pixeln
@@ -877,11 +877,11 @@ idle_orbit: false
 
 ---
 
-## 9. NeonPlan 3D auf dem Wandtablet
+## 9. HeimPlan 3D auf dem Wandtablet
 
 ![Tablet](images/tablet.jpg)
 
-NeonPlan 3D ist für Wandtablets wie das Amazon Fire gebaut:
+HeimPlan 3D ist für Wandtablets wie das Amazon Fire gebaut:
 
 - **Kein Rechnen im Leerlauf.** Ändert sich nichts, zeichnet die Ansicht kein einziges Bild. Die FPS-Anzeige zeigt dann „Ruhe (0 B/s)“.
 - **Qualitätsstufe Tablet:** Auf Fire-Tablets wählt „Auto“ sie von selbst. Muster, Schatten, Halos und Partikel fallen weg, Animationen laufen mit halber Rate.
@@ -908,14 +908,14 @@ Unter **Sicherung** im Editor:
 - **Als Vorlage teilen** exportiert ohne Bereiche, Geräte, Sensoren und Bilder. Das ist gut, um einen Grundriss weiterzugeben.
 - **Komplett-Backup:** **Alles sichern (Plan, Bilder, Packs)** speichert eine Datei mit dem Plan, allen Hintergrund- und Bildschirmbildern und den installierten Packs. **Komplett-Backup wiederherstellen …** spielt sie in dieselbe oder eine andere Installation zurück. Jedes Pack wird dabei erneut geprüft. Packs, die für eine andere Installation signiert sind, holst du dort über die Shop-Verbindung neu. Der Lizenzschlüssel ist nicht in der Datei.
 
-Das normale Backup von Home Assistant sichert NeonPlan 3D ebenfalls vollständig mit.
+Das normale Backup von Home Assistant sichert HeimPlan 3D ebenfalls vollständig mit.
 
 ---
 
 ## 11. Daten und Datenschutz
 
 - Plan, Bilder und Packs liegen in Home Assistant unter `.storage`. Nichts davon verlässt deine Installation.
-- NeonPlan 3D verbindet sich nur dann mit dem Internet, wenn du einen Lizenzschlüssel einträgst. Dann fragt es einmal am Tag bei mastershort.de nach Updates und sendet dabei den Schlüssel und die anonyme Installations-Kennung.
+- HeimPlan 3D verbindet sich nur dann mit dem Internet, wenn du einen Lizenzschlüssel einträgst. Dann fragt es einmal am Tag bei mastershort.de nach Updates und sendet dabei den Schlüssel und die anonyme Installations-Kennung.
 - Kamerabilder, Verlaufsdaten und Zustände bleiben in Home Assistant und werden nur im Browser angezeigt.
 - Die Zeitreise liest den Verlauf aus dem Recorder von Home Assistant, nur für die Geräte des Plans. Personen und ihre Tracker liest sie nie.
 
@@ -923,13 +923,13 @@ Das normale Backup von Home Assistant sichert NeonPlan 3D ebenfalls vollständig
 
 ## 12. Häufige Fragen und Fehlerbehebung
 
-**Hilfe und Rückmeldung:** Einen Fehler meldest du am besten als [Issue auf GitHub](https://github.com/Mastershort/neonplan3d/issues/new/choose), eine Idee als [Diskussion](https://github.com/Mastershort/neonplan3d/discussions/categories/ideas). So geht nichts verloren, alle sehen den Stand, und du wirst in den Release-Notizen genannt, wenn es umgesetzt ist. Die beiden Knöpfe dafür stehen auch im Editor unten in der Seitenleiste und auf der Seite Erweiterungen.
+**Hilfe und Rückmeldung:** Einen Fehler meldest du am besten als [Issue auf GitHub](https://github.com/sinanhrrck/heimplan3d/issues/new/choose), eine Idee als [Diskussion](https://github.com/sinanhrrck/heimplan3d/discussions/categories/ideas). So geht nichts verloren, alle sehen den Stand, und du wirst in den Release-Notizen genannt, wenn es umgesetzt ist. Die beiden Knöpfe dafür stehen auch im Editor unten in der Seitenleiste und auf der Seite Erweiterungen.
 
 **Wie bekomme ich das neueste Update?**
-Einstellungen → System → Updates. HACS sucht nur alle paar Stunden nach neuen Versionen, deshalb fehlt ein frisches Update dort manchmal noch. Dann: HACS → NeonPlan 3D → ⋮ → **Informationen aktualisieren** → **Herunterladen**. Danach Home Assistant neu starten und die Seite neu laden (Strg+F5, in der Companion-App: Einstellungen → Companion-App → Frontend-Cache zurücksetzen).
+Einstellungen → System → Updates. HACS sucht nur alle paar Stunden nach neuen Versionen, deshalb fehlt ein frisches Update dort manchmal noch. Dann: HACS → HeimPlan 3D → ⋮ → **Informationen aktualisieren** → **Herunterladen**. Danach Home Assistant neu starten und die Seite neu laden (Strg+F5, in der Companion-App: Einstellungen → Companion-App → Frontend-Cache zurücksetzen).
 
 **Kann ich Helfer statt echter Sensoren nehmen?**
-Ja. Überall, wo NeonPlan einen Zahlenwert erwartet (Leistung, Ladestand, Reichweite, Position …), stehen auch `input_number`- und `number`-Helfer zur Wahl, und wo ein Ein/Aus erwartet wird (Kontakt, Anwesenheit …), auch `input_boolean`. Für Leistung braucht der Helfer die Einheit W oder kW.
+Ja. Überall, wo HeimPlan einen Zahlenwert erwartet (Leistung, Ladestand, Reichweite, Position …), stehen auch `input_number`- und `number`-Helfer zur Wahl, und wo ein Ein/Aus erwartet wird (Kontakt, Anwesenheit …), auch `input_boolean`. Für Leistung braucht der Helfer die Einheit W oder kW.
 
 **Die Lautstärke eines Echo ändert sich nicht.**
 Alexa Media Player setzt die Lautstärke bei manchen Echos nicht oder nur verzögert und meldet den neuen Wert spät zurück. Prüfe es unter Entwicklerwerkzeuge → Aktionen mit `media_player.volume_set`: Passiert dort nichts, liegt es an der Integration (siehe Kapitel 6.5).
@@ -965,10 +965,10 @@ Unter Einstellungen die **Nordrichtung** prüfen: Grad im Uhrzeigersinn von „o
 Der Schlüssel war in den letzten zwölf Monaten mit mehr als fünf neuen Installationen verbunden. Melde dich bei uns, wir helfen.
 
 **Die Aktivierung meldet „Der Shop ist gerade ausgelastet“ oder „HTTP 429“.**
-Der Webhoster des Shops bremst zu viele Anfragen von einer Adresse. NeonPlan versucht es seit 1.9.1 selbst noch zweimal mit Pause; wenn es danach immer noch hakt, eine Minute warten und noch einmal auf **Aktivieren** klicken. Ältere Versionen vor 1.9.1 wurden vom Hoster an ihrem Browserkennzeichen abgewiesen – dort hilft nur das Update.
+Der Webhoster des Shops bremst zu viele Anfragen von einer Adresse. HeimPlan versucht es seit 1.9.1 selbst noch zweimal mit Pause; wenn es danach immer noch hakt, eine Minute warten und noch einmal auf **Aktivieren** klicken. Ältere Versionen vor 1.9.1 wurden vom Hoster an ihrem Browserkennzeichen abgewiesen – dort hilft nur das Update.
 
-**Die Meldung „Diese Seite zeigt noch NeonPlan 3D x.y, Home Assistant hat schon …“ bleibt.**
-Browser oder Companion-App halten noch ein altes NeonPlan-Bundle. Auf **Neu laden** tippen; in der Companion-App unter Einstellungen → Companion-App → **Frontend-Cache zurücksetzen**, dann die App ganz schließen und neu öffnen. Ein Neustart von Home Assistant hilft hier nicht. Dasselbe gilt, wenn eine gekaufte Pro-Erweiterung unter den Packs „braucht eine neuere NeonPlan-Version“ meldet.
+**Die Meldung „Diese Seite zeigt noch HeimPlan 3D x.y, Home Assistant hat schon …“ bleibt.**
+Browser oder Companion-App halten noch ein altes HeimPlan-Bundle. Auf **Neu laden** tippen; in der Companion-App unter Einstellungen → Companion-App → **Frontend-Cache zurücksetzen**, dann die App ganz schließen und neu öffnen. Ein Neustart von Home Assistant hilft hier nicht. Dasselbe gilt, wenn eine gekaufte Pro-Erweiterung unter den Packs „braucht eine neuere HeimPlan-Version“ meldet.
 
 **Am Dach hängen zwei Hologramme (Energie Pro).**
 Das ist gewollt: Das große ist die **Hausbilanz** (Solar & Energie), das kleinere die **Anlagenkarte** des Wechselrichters, dessen Feld das ist – bei mehreren Anlagen hat jede ihre eigene. Zu viel? Im Abschnitt **Hologramm** die Hausbilanz **Frei im Plan** hängen (Griff ◈), oder im Wechselrichter-Formular den Haken **Anlagenkarte zeigen** rausnehmen. Eine kleine Karte, die scheinbar am Dach klebt, ist oft das Geräte-Hologramm eines Geräts im Raum darunter – Kamera etwas drehen.
@@ -977,4 +977,4 @@ Das ist gewollt: Das große ist die **Hausbilanz** (Solar & Energie), das kleine
 Installierte Packs und Pro-Erweiterungen funktionieren weiter. Updates kommen, sobald der Shop wieder antwortet.
 
 **Wo melde ich Fehler?**
-Im Issue-Tracker auf GitHub: https://github.com/Mastershort/neonplan3d/issues
+Im Issue-Tracker auf GitHub: https://github.com/sinanhrrck/heimplan3d/issues

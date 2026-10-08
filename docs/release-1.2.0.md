@@ -17,9 +17,9 @@
 
 ### Community
 
-- **Ideen und Abstimmung:** Wünsche gehören jetzt in [Discussions → Ideas](https://github.com/Mastershort/neonplan3d/discussions/categories/ideas). Dort kann jede und jeder mit 👍 abstimmen, die beliebtesten Ideen kommen zuerst.
-- **Fehler melden** geht über ein kurzes Formular unter [Issues](https://github.com/Mastershort/neonplan3d/issues/new/choose), Fragen unter [Q&A](https://github.com/Mastershort/neonplan3d/discussions/categories/q-a).
-- Alle Änderungen auf einen Blick: [CHANGELOG](https://github.com/Mastershort/neonplan3d/blob/main/CHANGELOG.md).
+- **Ideen und Abstimmung:** Wünsche gehören jetzt in [Discussions → Ideas](https://github.com/sinanhrrck/heimplan3d/discussions/categories/ideas). Dort kann jede und jeder mit 👍 abstimmen, die beliebtesten Ideen kommen zuerst.
+- **Fehler melden** geht über ein kurzes Formular unter [Issues](https://github.com/sinanhrrck/heimplan3d/issues/new/choose), Fragen unter [Q&A](https://github.com/sinanhrrck/heimplan3d/discussions/categories/q-a).
+- Alle Änderungen auf einen Blick: [CHANGELOG](https://github.com/sinanhrrck/heimplan3d/blob/main/CHANGELOG.md).
 
 Nach dem Update Home Assistant neu starten und die Seite neu laden.
 
@@ -44,8 +44,8 @@ Nach dem Update Home Assistant neu starten und die Seite neu laden.
 
 ### Community
 
-- **Ideas and voting:** feature requests now go to [Discussions → Ideas](https://github.com/Mastershort/neonplan3d/discussions/categories/ideas). Everyone can vote with 👍, the most wanted ideas come first.
-- **Bug reports** use a short form under [Issues](https://github.com/Mastershort/neonplan3d/issues/new/choose), questions go to [Q&A](https://github.com/Mastershort/neonplan3d/discussions/categories/q-a).
-- All changes at a glance: [CHANGELOG](https://github.com/Mastershort/neonplan3d/blob/main/CHANGELOG.md).
+- **Ideas and voting:** feature requests now go to [Discussions → Ideas](https://github.com/sinanhrrck/heimplan3d/discussions/categories/ideas). Everyone can vote with 👍, the most wanted ideas come first.
+- **Bug reports** use a short form under [Issues](https://github.com/sinanhrrck/heimplan3d/issues/new/choose), questions go to [Q&A](https://github.com/sinanhrrck/heimplan3d/discussions/categories/q-a).
+- All changes at a glance: [CHANGELOG](https://github.com/sinanhrrck/heimplan3d/blob/main/CHANGELOG.md).
 
 Restart Home Assistant after updating and reload the page.

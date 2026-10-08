@@ -1,10 +1,10 @@
-# NeonPlan 3D – Manual
+# HeimPlan 3D – Manual
 
 🇬🇧 English · [🇩🇪 Deutsch](anleitung.md)
 
-NeonPlan 3D draws your home right inside Home Assistant and shows it as a 3D model in a neon look. Lights glow in their colours, blinds move, windows tilt, doors swing open, cameras look into the room and the TV shows what is playing. Everything runs locally in Home Assistant, without a cloud or external programs, and it is built for wall tablets.
+HeimPlan 3D draws your home right inside Home Assistant and shows it as a 3D model in a neon look. Lights glow in their colours, blinds move, windows tilt, doors swing open, cameras look into the room and the TV shows what is playing. Everything runs locally in Home Assistant, without a cloud or external programs, and it is built for wall tablets.
 
-This manual describes every feature of the current version. What changed in which version is in the [changelog](../CHANGELOG.md) and on the [releases page](https://github.com/Mastershort/neonplan3d/releases). The pictures come from the demo with invented data. The app follows the language of your Home Assistant user (profile → language); the labels below are the English ones. German and English are built in; French, Spanish, Dutch, Italian, Hungarian, Danish, Swedish, Norwegian (Bokmål and Nynorsk), Finnish, Czech, Polish, Romanian and Slovenian are fetched when needed, so the bundles stay small for wall tablets. A text missing in a language shows in English.
+This manual describes every feature of the current version. What changed in which version is in the [changelog](../CHANGELOG.md) and on the [releases page](https://github.com/sinanhrrck/heimplan3d/releases). The pictures come from the demo with invented data. The app follows the language of your Home Assistant user (profile → language); the labels below are the English ones. German and English are built in; French, Spanish, Dutch, Italian, Hungarian, Danish, Swedish, Norwegian (Bokmål and Nynorsk), Finnish, Czech, Polish, Romanian and Slovenian are fetched when needed, so the bundles stay small for wall tablets. A text missing in a language shows in English.
 
 ![The house in the 3D view](images/view-house.jpg)
 
@@ -20,7 +20,7 @@ This manual describes every feature of the current version. What changed in whic
 6. [Pro add-ons](#6-pro-add-ons)
 7. [Extensions, shop and furniture packs](#7-extensions-shop-and-furniture-packs)
 8. [The dashboard card](#8-the-dashboard-card)
-9. [NeonPlan 3D on a wall tablet](#9-neonplan-3d-on-a-wall-tablet)
+9. [HeimPlan 3D on a wall tablet](#9-neonplan-3d-on-a-wall-tablet)
 10. [Backup and moving](#10-backup-and-moving)
 11. [Data and privacy](#11-data-and-privacy)
 12. [FAQ and troubleshooting](#12-faq-and-troubleshooting)
@@ -37,34 +37,34 @@ This manual describes every feature of the current version. What changed in whic
 
 ### With HACS
 
-[![Open your Home Assistant instance and open the NeonPlan 3D repository inside HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Mastershort&repository=neonplan3d&category=integration)
+[![Open your Home Assistant instance and open the HeimPlan 3D repository inside HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Mastershort&repository=heimplan3d&category=integration)
 
-The button opens NeonPlan 3D straight in the HACS of your installation. By hand:
+The button opens HeimPlan 3D straight in the HACS of your installation. By hand:
 
 1. Open **HACS** in Home Assistant.
 2. Choose **⋮ → Custom repositories** at the top right.
-3. Enter `https://github.com/Mastershort/neonplan3d`, type **Integration**, and add it.
-4. Search for **NeonPlan 3D**, install it and restart Home Assistant.
-5. **Settings → Devices & services → Add integration → NeonPlan 3D**, or straight with this button:
+3. Enter `https://github.com/sinanhrrck/heimplan3d`, type **Integration**, and add it.
+4. Search for **HeimPlan 3D**, install it and restart Home Assistant.
+5. **Settings → Devices & services → Add integration → HeimPlan 3D**, or straight with this button:
 
-   [![Open your Home Assistant instance and start setting up NeonPlan 3D.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=neonplan3d)
+   [![Open your Home Assistant instance and start setting up HeimPlan 3D.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=heimplan3d)
 
-**NeonPlan 3D** now appears in the sidebar. The dashboard card is available right away, no resource needed.
+**HeimPlan 3D** now appears in the sidebar. The dashboard card is available right away, no resource needed.
 
 ### By hand
 
-Copy the folder `custom_components/neonplan3d` from the repository into `config/custom_components/`, restart Home Assistant and add the integration as above.
+Copy the folder `custom_components/heimplan3d` from the repository into `config/custom_components/`, restart Home Assistant and add the integration as above.
 
 ### Updates
 
-HACS reports new versions by itself. Restart Home Assistant after every update. Until then NeonPlan 3D shows a note at the top that a restart is pending. Your plan always stays, even if you remove the integration and add it again.
+HACS reports new versions by itself. Restart Home Assistant after every update. Until then HeimPlan 3D shows a note at the top that a restart is pending. Your plan always stays, even if you remove the integration and add it again.
 
 ---
 
 ## 2. Your first 3D plan in ten minutes
 
-1. Open **NeonPlan 3D** in the sidebar and switch to **Editor** at the top.
-2. Choose **Add floor** on the right. If you have floors in Home Assistant, NeonPlan 3D offers them directly.
+1. Open **HeimPlan 3D** in the sidebar and switch to **Editor** at the top.
+2. Choose **Add floor** on the right. If you have floors in Home Assistant, HeimPlan 3D offers them directly.
 3. If the floor has areas, **"Add … rooms from HA areas"** creates a room for each area. Drag the rooms into place and adjust the corners. Or draw with **Rectangle** or **Free shape**.
 4. Tap a wall with **Doors & windows** to add doors and windows.
 5. Tap a room and tap **Place** under **Devices** on the right for the devices you want, e.g. the lights, covers, thermostats, media players and sensors of the area. Below the list, **Place all …** puts all main devices in at once after asking.
@@ -142,7 +142,7 @@ Without a selection, the sidebar shows the floors:
 
 A selected room shows on the right:
 
-- **Name** and **Area**: The link to a Home Assistant area matters most. Through it NeonPlan 3D finds the room's lights, covers, sensors and scenes.
+- **Name** and **Area**: The link to a Home Assistant area matters most. Through it HeimPlan 3D finds the room's lights, covers, sensors and scenes.
 - **Floor**: wood, oak, tiles, carpet, stone or concrete show as a subtle pattern in 3D.
 - **View as this room's start**: turn on **3D beside**, turn and zoom the room the way it should show, then tap the button. When you tap the room in 3D later, the camera flies right there – angle, zoom and framing. ↺ removes it, and the room is shown from above again.
 - The **Devices** of the area, see [4.10](#410-devices).
@@ -213,7 +213,7 @@ Every opening has:
 | **Contact second leaf** | For double windows and doors |
 | **Garage door** | A garage door follows a cover entity or a contact. Its open part lies under the ceiling |
 
-NeonPlan 3D matches covers and contacts through the area automatically. You can change them by hand at any time.
+HeimPlan 3D matches covers and contacts through the area automatically. You can change them by hand at any time.
 
 ### 4.8 Furniture
 
@@ -298,7 +298,7 @@ TVs, media walls, the wall unit with a TV (the wall unit without a TV is a lamp:
 - **Ask before switching** and **Marker in 3D** as with devices.
 - **Pictures by state** on screens: a Pro add-on, see [6.3](#63-live-screens).
 
-"Automatic" means NeonPlan 3D finds the matching entity in the area by itself.
+"Automatic" means HeimPlan 3D finds the matching entity in the area by itself.
 
 ### 4.13 Cameras
 
@@ -330,7 +330,7 @@ The item **Parking spot** in the Parking group marks where a car stands: in the 
 
 The robot vacuum item links to the `vacuum` entity. While the robot cleans, it drives lanes through the room of its dock in 3D and then returns. The lanes are simulated because Home Assistant usually does not know the real position.
 
-Many robots do report the room they are cleaning, for example Roborock and Dreame with a "current room" sensor. NeonPlan 3D finds this sensor on the robot's device by itself; the **Current room (sensor)** field lets you pick another one. The reported name is compared with the room name and the Home Assistant area, ignoring case and the spelling of umlauts ("Kueche" matches "Küche"). When the robot changes rooms it appears there in 3D and drives its lanes. If no room matches, it stays in the room of its dock.
+Many robots do report the room they are cleaning, for example Roborock and Dreame with a "current room" sensor. HeimPlan 3D finds this sensor on the robot's device by itself; the **Current room (sensor)** field lets you pick another one. The reported name is compared with the room name and the Home Assistant area, ignoring case and the spelling of umlauts ("Kueche" matches "Küche"). When the robot changes rooms it appears there in 3D and drives its lanes. If no room matches, it stays in the room of its dock.
 
 Its lanes keep clear of furniture standing on the floor: cabinets, sofas, beds, kitchen units and appliances. It drives under tables, desks, chairs, stools and benches, over rugs and under anything hung on the wall, such as wall cabinets.
 
@@ -364,7 +364,7 @@ With **Outdoor** you draw lawn, terrace, path, driveway, pool, flower bed, hedge
 
 A simple house gets a flat or gable roof over the whole top floor under **Settings → Roof**. For everything else – an L- or T-shaped house, a house with a barn, an extension with a pent roof, a roof that reaches far down on one side – you build the roof from **roof sections**.
 
-- Choose **Roof sections (custom)** under **Roof**, or the **Roof** tool. The first time, NeonPlan 3D proposes the sections from your rooms: per floor the parts no higher floor covers, each with a gable roof. Then you adjust them.
+- Choose **Roof sections (custom)** under **Roof**, or the **Roof** tool. The first time, HeimPlan 3D proposes the sections from your rooms: per floor the parts no higher floor covers, each with a gable roof. Then you adjust them.
 - In the **Roof** tool you drag a new section in the plan. Tap selects one, dragging moves it, the corners resize it. At the top you choose the floor whose rooms the plan shows. The 3D view opens beside it with the whole house, so you see every change at once.
 - With the lock **🔓 Fix** (or the key **L**) a finished section stays put and no longer slips when you tap it; **🔒 Floor plan** locks all sections too.
 - Each section has a **shape** – gable, hip, half-hip (a gable hipped at the top), pyramid (four slopes to a point), mansard (steep below, flatter above), pent, flat and parapet (a flat roof with a wall ring) – and a **ridge direction** (↔ or ↕).
@@ -418,7 +418,7 @@ Below the field you see its power, counted with 400 W per module. The plan lock 
 
 **Meter and grid connection:** The **electricity meter** is the fourth energy device; it takes the grid sensor (W, + = import) and shows "Grid import 420 W" or "Export 900 W". The **grid connection** marks where the cable to the utility leaves the plot, e.g. at the end of the driveway; it is added where the cable would end by itself and can be dragged in the plan. Every device has a **Name** field in its form ("Inverter north") that shows in the list, the form and on the pins in 3D, and inverters and batteries a **Model**: wall unit, slim and tall or hybrid; tower, wall battery or compact balcony battery. Several inverters and batteries work, e.g. a big plant and a balcony plant: each gets its own sensor.
 
-**Energy balance:** NeonPlan takes grid, solar and battery from the devices in the plan (meter, inverters, batteries; several add up, charges are averaged). In the **Energy balance** section you choose other sensors, flip signs and set the house consumption. **Take over from the energy dashboard** fetches the sensors you set up in Home Assistant's energy dashboard: for every energy statistic the power sensor of the same device. Check the signs afterwards.
+**Energy balance:** HeimPlan takes grid, solar and battery from the devices in the plan (meter, inverters, batteries; several add up, charges are averaged). In the **Energy balance** section you choose other sensors, flip signs and set the house consumption. **Take over from the energy dashboard** fetches the sensors you set up in Home Assistant's energy dashboard: for every energy statistic the power sensor of the same device. Check the signs afterwards.
 
 At the bottom, a card announces the coming Pro add-on **Energy Pro**. Everything you set up here stays free and is used by it directly.
 
@@ -533,7 +533,7 @@ With north set, sunlight from `sun.sun` falls through the windows facing the sun
 
 ![A warning](images/view-alert-banner.jpg)
 
-NeonPlan 3D warns for free and without setup:
+HeimPlan 3D warns for free and without setup:
 
 | Warning | Trigger |
 |---|---|
@@ -589,7 +589,7 @@ The weather around the house follows your weather entity:
 | windy | Wind drives rain and snow at an angle |
 | sunny, clear-night | Sun by day, moon by night |
 
-If the entity provides `cloud_coverage` and `wind_speed`, NeonPlan 3D uses them.
+If the entity provides `cloud_coverage` and `wind_speed`, HeimPlan 3D uses them.
 
 ![Snow](images/view-weather-snow.jpg)
 
@@ -623,7 +623,7 @@ At the top of the **Energy** tool sits the **Setup** list: it ticks off what is 
 
 1. **Solar field:** + Solar field puts modules on the sunniest roof face (4.20).
 2. **Devices:** add the meter, inverter, home battery, wallbox and grid connection. They land in the garage or utility room by themselves and can be dragged in the plan.
-3. **Sensors:** easiest with **Take over from the energy dashboard** (Energy balance section): NeonPlan takes the statistics of your energy dashboard, finds the power sensor of the same device for each and puts it on the meter (grid), the inverter (PV) and the battery (power, charge). Missing devices are created. Otherwise pick the sensors in each device's form by hand: meter = grid power in watts (+ = import), inverter = PV power, battery = power (+ = discharging) and charge in percent, wallbox = power and status.
+3. **Sensors:** easiest with **Take over from the energy dashboard** (Energy balance section): HeimPlan takes the statistics of your energy dashboard, finds the power sensor of the same device for each and puts it on the meter (grid), the inverter (PV) and the battery (power, charge). Missing devices are created. Otherwise pick the sensors in each device's form by hand: meter = grid power in watts (+ = import), inverter = PV power, battery = power (+ = discharging) and charge in percent, wallbox = power and status.
 4. **Check the signs:** if the meter reports "export" at night or the battery charges without sun, a sensor counts the other way round. The energy balance says so and offers **Flip the sign**.
 5. **Grid connection** (optional): the grid cable runs there, e.g. to the end of the driveway. Without it the cable ends at the edge of your outdoor areas.
 
@@ -671,7 +671,7 @@ Sound & Cinema brings the music into the 3D house. It needs a speaker in the pla
 
 **Wall tablet:** on the tablet level the rings run at half the frame rate, the cards without the glass effect.
 
-**Which speakers fit?** NeonPlan uses Home Assistant's standard media player interface: what works in Home Assistant's media player dialog works here too. This is an assessment from documentation and experience, not a guarantee for every model:
+**Which speakers fit?** HeimPlan uses Home Assistant's standard media player interface: what works in Home Assistant's media player dialog works here too. This is an assessment from documentation and experience, not a guarantee for every model:
 
 | Integration | Cover and title | Volume | Multiroom lines |
 |---|---|---|---|
@@ -687,7 +687,7 @@ What a player should bring: the state `playing`/`paused`, `media_title` and `med
 
 **One device, one player:** every media player has exactly one card. Furniture you linked to the player by hand wins over the player placed as a device. If the same speaker exists twice in Home Assistant (e.g. an Echo through Alexa Media Player **and** through Music Assistant, recognisable by "_2" at the end), pick the one you really play through – the other never reports "playing".
 
-**Echo devices (Alexa Media Player):** play, pause and track change work. The **volume** cannot be set on some devices and versions of Alexa Media Player, or only with a delay, and the new value often comes back minutes later. This is down to the unofficial Amazon interface, not NeonPlan; Home Assistant's own media player dialog has the same limit. Echos controlled through Music Assistant usually follow the volume more reliably.
+**Echo devices (Alexa Media Player):** play, pause and track change work. The **volume** cannot be set on some devices and versions of Alexa Media Player, or only with a delay, and the new value often comes back minutes later. This is down to the unofficial Amazon interface, not HeimPlan; Home Assistant's own media player dialog has the same limit. Echos controlled through Music Assistant usually follow the volume more reliably.
 
 ### 6.6 Car Pro
 
@@ -695,7 +695,7 @@ Car Pro brings the car into the plan the way its integration reports it (Tesla, 
 
 Car Pro lives on the **parking spot**, not on the vehicle furniture. If your car stands in the plan as plain furniture, **Turn into a parking spot** in its form makes it a parking spot with this vehicle.
 
-**Setup:** at the bottom of the parking spot form, the **Car Pro** section. Under **Car** choose any entity of the car – NeonPlan finds the others on the same device: charge, range, charging power or state, cable, lock, climate or preheating, location. Every role can be set by hand or switched off with "None". A "car present" sensor on the spot serves as the starting point of the search as well.
+**Setup:** at the bottom of the parking spot form, the **Car Pro** section. Under **Car** choose any entity of the car – HeimPlan finds the others on the same device: charge, range, charging power or state, cable, lock, climate or preheating, location. Every role can be set by hand or switched off with "None". A "car present" sensor on the spot serves as the starting point of the search as well.
 
 **In the house:** the vehicle wears a **light band** in the colour of its charge (green above 50 %, yellow down to 20 %, red below), stronger while it charges. While the climate or preheating runs, the car glows warm. The **pin at the spot** reads "78 % · 312 km · ⚡ 7.4 kW · 🔒". When the car is out, the spot stays empty and the pin says **away**, with the tracker's zone when there is one ("away · Work").
 
@@ -750,7 +750,7 @@ Not included are camera pictures (the recorder keeps none) and people and tracke
 
 ![Extensions](images/extensions.jpg)
 
-The **✦ Extensions** tab gathers everything you can add to NeonPlan 3D.
+The **✦ Extensions** tab gathers everything you can add to HeimPlan 3D.
 
 ### 7.1 Shop connection
 
@@ -762,11 +762,11 @@ With your first purchase at mastershort.de you get a **licence key** in the form
 
 After that:
 
-- **Updates come by themselves.** Once a day NeonPlan 3D asks whether there are new purchases or newer versions and installs them. **Check now** asks right away.
+- **Updates come by themselves.** Once a day HeimPlan 3D asks whether there are new purchases or newer versions and installs them. **Check now** asks right away.
 - **Everything keeps working offline.** Installed packs are checked locally, the shop is never needed for that.
 - **Disconnect** removes the key. Installed packs stay.
 - **Pack updates:** When a bought pack grows, the page shows once what was added.
-- **New in the shop:** With a shop connection the page shows the packs and Pro add-ons you do not have yet at the top, with **NEW** for fresh ones. When there is something new, a small dot lights up on the **✦ Extensions** tab. Without a key NeonPlan 3D never contacts the shop.
+- **New in the shop:** With a shop connection the page shows the packs and Pro add-ons you do not have yet at the top, with **NEW** for fresh ones. When there is something new, a small dot lights up on the **✦ Extensions** tab. Without a key HeimPlan 3D never contacts the shop.
 - **Loyalty discount:** With your first purchase you get a personal discount code for every further pack and Pro add-on (not for bundles). It is in the order e-mail, in your account and at the top under **New in the shop**; tapping an offer puts it straight into the cart.
 
 **Several installations:** A key is connected to at most three installations at a time. If you move to new hardware, simply connect the new installation, the oldest one then drops out. Up to five new connections are possible per year. The **Installation id** at the top is an anonymous fingerprint of your installation.
@@ -807,9 +807,9 @@ At the bottom of the page you find your installed packs with **Remove**. Below i
 
 ![The card in a dashboard](images/card-og-dim.jpg)
 
-The card `custom:neonplan3d-card` brings the 3D view into any dashboard. It loads automatically.
+The card `custom:heimplan3d-card` brings the 3D view into any dashboard. It loads automatically.
 
-**Adding it:** Edit the dashboard, **Add card**, search for "NeonPlan". Set every option in the card's visual editor:
+**Adding it:** Edit the dashboard, **Add card**, search for "HeimPlan". Set every option in the card's visual editor:
 
 | Section | Options |
 |---|---|
@@ -823,7 +823,7 @@ The card `custom:neonplan3d-card` brings the 3D view into any dashboard. It load
 In YAML a card looks like this. Every line except the first is optional:
 
 ```yaml
-type: custom:neonplan3d-card
+type: custom:heimplan3d-card
 floor: floor_ab12cd34   # show one floor (id from the editor)
 room: room_ab12cd34     # start in this room (id from the editor), e.g. a display for the kids' room
 height: 420             # height in pixels
@@ -875,11 +875,11 @@ idle_orbit: false
 
 ---
 
-## 9. NeonPlan 3D on a wall tablet
+## 9. HeimPlan 3D on a wall tablet
 
 ![Tablet](images/tablet.jpg)
 
-NeonPlan 3D is built for wall tablets such as the Amazon Fire:
+HeimPlan 3D is built for wall tablets such as the Amazon Fire:
 
 - **No work while idle.** If nothing changes, the view draws not a single frame. The FPS display then reads "At rest (0 fps)".
 - **Tablet quality level:** "Auto" picks it by itself on Fire tablets. Patterns, shadows, halos and particles are left out, animations run at half rate.
@@ -906,14 +906,14 @@ Under **Backup** in the editor:
 - **Share as template** exports without areas, devices, sensors and pictures. Good for passing a floor plan on.
 - **Full backup:** **Back up everything (plan, pictures, packs)** saves one file with the plan, every background and screen picture and the installed packs. **Restore a full backup …** brings it back into the same or another installation. Every pack is checked again. Packs signed for another installation are fetched there again through the shop connection. The licence key is not in the file.
 
-Home Assistant's own backup includes NeonPlan 3D completely as well.
+Home Assistant's own backup includes HeimPlan 3D completely as well.
 
 ---
 
 ## 11. Data and privacy
 
 - The plan, pictures and packs are stored in Home Assistant under `.storage`. None of it leaves your installation.
-- NeonPlan 3D only connects to the internet if you enter a licence key. Then it asks mastershort.de once a day for updates and sends the key and the anonymous installation id.
+- HeimPlan 3D only connects to the internet if you enter a licence key. Then it asks mastershort.de once a day for updates and sends the key and the anonymous installation id.
 - Camera pictures, history and states stay in Home Assistant and are only shown in the browser.
 - Time travel reads the history from Home Assistant's recorder, only for the devices of the plan. It never reads people or their trackers.
 
@@ -921,13 +921,13 @@ Home Assistant's own backup includes NeonPlan 3D completely as well.
 
 ## 12. FAQ and troubleshooting
 
-**Help and feedback:** report a bug as an [issue on GitHub](https://github.com/Mastershort/neonplan3d/issues/new/choose) and an idea as a [discussion](https://github.com/Mastershort/neonplan3d/discussions/categories/ideas). Nothing gets lost, everyone sees the state, and you are credited in the release notes once it is built. The two buttons for it are also at the bottom of the editor's sidebar and on the Extensions page.
+**Help and feedback:** report a bug as an [issue on GitHub](https://github.com/sinanhrrck/heimplan3d/issues/new/choose) and an idea as a [discussion](https://github.com/sinanhrrck/heimplan3d/discussions/categories/ideas). Nothing gets lost, everyone sees the state, and you are credited in the release notes once it is built. The two buttons for it are also at the bottom of the editor's sidebar and on the Extensions page.
 
 **How do I get the latest update?**
-Settings → System → Updates. HACS only looks for new versions every few hours, so a fresh update may not show there yet. Then: HACS → NeonPlan 3D → ⋮ → **Update information** → **Download**. Then restart Home Assistant and reload the page (Ctrl+F5; in the Companion app: Settings → Companion app → reset frontend cache).
+Settings → System → Updates. HACS only looks for new versions every few hours, so a fresh update may not show there yet. Then: HACS → HeimPlan 3D → ⋮ → **Update information** → **Download**. Then restart Home Assistant and reload the page (Ctrl+F5; in the Companion app: Settings → Companion app → reset frontend cache).
 
 **Can I use helpers instead of real sensors?**
-Yes. Wherever NeonPlan expects a number (power, charge, range, position …), `input_number` and `number` helpers can be picked too, and wherever it expects on/off (contact, presence …), `input_boolean` as well. For power the helper needs the unit W or kW.
+Yes. Wherever HeimPlan expects a number (power, charge, range, position …), `input_number` and `number` helpers can be picked too, and wherever it expects on/off (contact, presence …), `input_boolean` as well. For power the helper needs the unit W or kW.
 
 **An Echo's volume does not change.**
 Alexa Media Player does not set the volume on some Echos, or only with a delay, and reports the new value late. Check it in Developer tools → Actions with `media_player.volume_set`: if nothing happens there, it is the integration (see chapter 6.5).
@@ -963,10 +963,10 @@ Check **North** under Settings: degrees clockwise from "up" in the plan.
 The key was connected to more than five new installations in the last twelve months. Contact us, we will help.
 
 **Activation says "The shop is busy right now" or "HTTP 429".**
-The shop's web host throttles too many requests from one address. Since 1.9.1 NeonPlan retries twice with a pause by itself; if it still fails, wait a minute and click **Activate** again. Versions before 1.9.1 were turned away by the host because of their user agent – there only the update helps.
+The shop's web host throttles too many requests from one address. Since 1.9.1 HeimPlan retries twice with a pause by itself; if it still fails, wait a minute and click **Activate** again. Versions before 1.9.1 were turned away by the host because of their user agent – there only the update helps.
 
-**The notice "This page still shows NeonPlan 3D x.y, Home Assistant already has …" stays.**
-The browser or the companion app still holds an old NeonPlan bundle. Tap **Reload**; in the companion app go to Settings → Companion app → **Reset frontend cache**, then close the app completely and open it again. Restarting Home Assistant does not help here. The same applies when a bought Pro add-on says "needs a newer NeonPlan version" under the packs.
+**The notice "This page still shows HeimPlan 3D x.y, Home Assistant already has …" stays.**
+The browser or the companion app still holds an old HeimPlan bundle. Tap **Reload**; in the companion app go to Settings → Companion app → **Reset frontend cache**, then close the app completely and open it again. Restarting Home Assistant does not help here. The same applies when a bought Pro add-on says "needs a newer HeimPlan version" under the packs.
 
 **Two holograms hang on the roof (Energy Pro).**
 That is intended: the big one is the **house balance** (Solar & Energy), the smaller one the **plant card** of the inverter whose field that is – with several plants each has its own. Too much? In the **Hologram** section hang the house balance **Free in the plan** (handle ◈), or untick **Show the plant card** in the inverter form. A small card that seems to stick to the roof is often the device hologram of a device in the room below – turn the camera a little.
@@ -975,4 +975,4 @@ That is intended: the big one is the **house balance** (Solar & Energy), the sma
 Installed packs and Pro add-ons keep working. Updates arrive as soon as the shop answers again.
 
 **Where do I report bugs?**
-In the issue tracker on GitHub: https://github.com/Mastershort/neonplan3d/issues
+In the issue tracker on GitHub: https://github.com/sinanhrrck/heimplan3d/issues
